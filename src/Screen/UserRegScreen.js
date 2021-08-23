@@ -213,21 +213,21 @@ export const UserRegScreen = () => {
                 <h5 className="pt-2 fs-6 ">2 referencias personales (amigos o ex-comapeñeros detrabajo)</h5> 
                     <div className="row pt-2">
                         <h5 className="py-2 fs-6 fw-normal">Primera referencia:</h5> 
-                        <div className="col-6 ">
+                        <div className="col-12 col-sm-6 ">
                             <label className="form-label">Nombre:</label>
                             <input name="refP1_nombre" onChange={handleInput}className="col-12 list-group-item" placeholder="Nombre completo" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Ocupacion:</label>
                             <input name="refP1_ocupacion" onChange={handleInput}className="col-12 list-group-item" placeholder="Especificar" type="text"/>
                         </div>
                     </div>
                     <div className="row pt-4">
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Domicilio:</label>
                             <input name="refP1_dom"onChange={handleInput} className="col-12 list-group-item" placeholder="con codigo postal" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Telefono (celular o casa):</label>
                             <input name="refP1_tel"onChange={handleInput} className="col-12 list-group-item" placeholder="Con lada" type="number"/>
                         </div>
@@ -235,22 +235,22 @@ export const UserRegScreen = () => {
                     </div>
                     <div className="row pt-4">
                         <h5 className="py-2 fs-6 fw-normal">Segunda referencia:</h5> 
-                        <div className="col-6 ">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Nombre:</label>
                             <input name="refP2_nombre" onChange={handleInput}className="col-12 list-group-item" placeholder="Nombre completo" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Ocupacion:</label>
                             <input name="refP2_ocupacion" onChange={handleInput}className="col-12 list-group-item" placeholder="Especificar" type="text"/>
                         </div>
                         
                     </div>
                     <div className="row pt-4 pb-4">
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Domicilio:</label>
                             <input name="refP2_domicilio" onChange={handleInput}className="col-12 list-group-item" placeholder="con codigo postal" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Telefono (celular o casa):</label>
                             <input name="refP2_tel"onChange={handleInput} className="col-12 list-group-item" placeholder="Con lada" type="number"/>
                         </div>
@@ -258,21 +258,21 @@ export const UserRegScreen = () => {
                     <h5 className="pt-4 fs-6 ">2 referencias vecinales (Que vivan a maximo 1km a la redonda)</h5> 
                     <div className="row pt-2">
                         <h5 className="py-2 fs-6 fw-normal">Primera referencia:</h5> 
-                        <div className="col-6 ">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Nombre:</label>
                             <input name="refV1_nombre"onChange={handleInput} className="col-12 list-group-item" placeholder="Nombre completo" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Ocupacion:</label>
                             <input name="refV1_ocupacion"onChange={handleInput} className="col-12 list-group-item" placeholder="Especificar" type="text"/>
                         </div>
                     </div>
                     <div className="row pt-4">
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Domicilio:</label>
                             <input name="refV1_dom"onChange={handleInput} className="col-12 list-group-item" placeholder="con codigo postal" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Telefono (celular o casa):</label>
                             <input name="refV1_tel"onChange={handleInput} className="col-12 list-group-item" placeholder="Con lada" type="number"/>
                         </div>
@@ -280,21 +280,21 @@ export const UserRegScreen = () => {
                     </div>
                     <div className="row pt-4">
                         <h5 className="py-2 fs-6 fw-normal">Segunda referencia:</h5> 
-                        <div className="col-6 ">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Nombre:</label>
                             <input name="refV2_nombre"onChange={handleInput} className="col-12 list-group-item" placeholder="Nombre completo" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Ocupacion:</label>
                             <input name="refV2_ocupacion" onChange={handleInput}className="col-12 list-group-item" placeholder="Especificar" type="text"/>
                         </div>
                     </div>
                     <div className="row pt-4">
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Domicilio:</label>
                             <input name="refV2_dom" onChange={handleInput}className="col-12 list-group-item" placeholder="con codigo postal" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Telefono (celular o casa):</label>
                             <input name="refV2_tel" onChange={handleInput}className="col-12 list-group-item" placeholder="Con lada" type="number"/>
                         </div>
@@ -306,9 +306,9 @@ export const UserRegScreen = () => {
                     </div>
 
                     <div className="row pt-4 ">
-                        <div className="col-8 col-md-8">
+                        <div className="col-8 col-sm-8">
                             <label className="form-label">Numero de Seguridad Social (NSS):</label>
-                            <input name="datosPers_nss"onChange={handleInput} className="col-12 list-group-item  " placeholder="CURP" type="text"/>
+                            <input name="datosPers_nss"onChange={handleInput} className="col-12 list-group-item  " placeholder="NSS" type="text"/>
                         </div>
                         <div className="col-4 col-md-4">
                             <label className="col-10 form-label text-center" >Consulta tu NSS</label>
@@ -319,31 +319,31 @@ export const UserRegScreen = () => {
 
                     <h5 className="pt-4 fs-6 ">Ultimo trabajo o actual</h5> 
                     <div className="row pt-2">
-                        <div className="col-6 ">
+                        <div className="col-12 col-sm-6 ">
                             <label className="form-label">Puesto:</label>
                             <input name="ultT_puesto"onChange={handleInput} className="col-12 list-group-item" placeholder="Nombre completo" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Departamento:</label>
                             <input name="ultT_dpto" onChange={handleInput}className="col-12 list-group-item" placeholder="Especificar" type="text"/>
                         </div>
                     </div>
                     <div className="row pt-4">
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Jefe inemdiato:</label>
                             <input name="ultT_gfe"onChange={handleInput} className="col-12 list-group-item" placeholder="con codigo postal" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Telefono RH/Empresa:</label>
                             <input name="ultT_tel"onChange={handleInput} className="col-12 list-group-item" placeholder="Con lada" type="number"/>
                         </div> 
                     </div>
                     <div className="row pt-4">
-                         <div className="col-8">
+                         <div className="col-12 col-sm-6">
                             <label className="form-label">Detala brevemente el motivo de tu separacion:</label>
                             <textarea  name="ultT_motivo"onChange={handleInput} className="col-12 list-group-item" placeholder="Desde tu punto vista / tu testimonio" />
                         </div> 
-                        <div className="col-4">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Tiempo en la empresa:</label>
                             <div className="col-12 row">
                                 <input name="ultT_durac" onChange={handleInput}className="col-5 list-group-item text-center " placeholder="36" type="number"/>
@@ -353,31 +353,31 @@ export const UserRegScreen = () => {
                     </div>
                     <h5 className="pt-4 fs-6 ">Penultimo trabajo</h5> 
                     <div className="row pt-2">
-                        <div className="col-6 ">
+                        <div className="col-12 col-sm-6 ">
                             <label className="form-label">Puesto:</label>
                             <input name="penultT_puesto" onChange={handleInput}className="col-12 list-group-item" placeholder="Nombre completo" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Departamento:</label>
                             <input name="penultT_dpto"onChange={handleInput} className="col-12 list-group-item" placeholder="Especificar" type="text"/>
                         </div>
                     </div>
                     <div className="row pt-4">
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Jefe inemdiato:</label>
                             <input name="penultT_gfe" onChange={handleInput}className="col-12 list-group-item" placeholder="con codigo postal" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Telefono RH/Empresa:</label>
                             <input name="penultT_tel"onChange={handleInput} className="col-12 list-group-item" placeholder="Con lada" type="number"/>
                         </div> 
                     </div>
                     <div className="row pt-4">
-                        <div className="col-8">
+                        <div className="col-12 col-sm-8">
                             <label className="form-label">Detala brevemente el motivo de tu separacion:</label>
                             <textarea  name="penultT_motivo" onChange={handleInput}className="col-12 list-group-item" placeholder="Desde tu punto vista / tu testimonio" />
                         </div> 
-                        <div className="col-4">
+                        <div className="col-12 col-sm-4">
                             <label className="form-label">Tiempo en la empresa:</label>
                             <div className="col-12 row">
                                 <input name="penultT_durac"onChange={handleInput} className="col-5 list-group-item text-center " placeholder="36" type="number"/>
@@ -387,31 +387,31 @@ export const UserRegScreen = () => {
                     </div>
                     <h5 className="pt-4 fs-6 ">Ante penultimo trabajo</h5> 
                     <div className="row pt-2">
-                        <div className="col-6 ">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Puesto:</label>
                             <input name="antpenultT_puesto" onChange={handleInput}className="col-12 list-group-item" placeholder="Nombre completo" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Departamento:</label>
                             <input name="antpenultT_dpto"onChange={handleInput} className="col-12 list-group-item" placeholder="Especificar" type="text"/>
                         </div>
                     </div>
                     <div className="row pt-4">
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Jefe inemdiato:</label>
                             <input name="antpenultT_gfe"onChange={handleInput} className="col-12 list-group-item" placeholder="con codigo postal" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Telefono RH/Empresa:</label>
                             <input name="antpenultT_tel" onChange={handleInput}className="col-12 list-group-item" placeholder="Con lada" type="number"/>
                         </div> 
                     </div>
                     <div className="row pt-4">
-                        <div className="col-8">
+                        <div className="col-12 col-sm-8">
                             <label className="form-label">Detala brevemente el motivo de tu separacion:</label>
                             <textarea  name="antpenultT_motivo" onChange={handleInput}className="col-12 list-group-item" placeholder="Desde tu punto vista / tu testimonio" />
                         </div> 
-                        <div className="col-4">
+                        <div className="col-12 col-sm-4">
                             <label className="form-label">Tiempo en la empresa:</label>
                             <div className="col-12 row">
                                 <input name="antpenultT_durac" onChange={handleInput}className="col-5 list-group-item text-center " placeholder="36" type="number"/>
@@ -427,7 +427,7 @@ export const UserRegScreen = () => {
                     </div>
 
                     <div className="row pt-2 ">
-                        <div className="col-6">
+                        <div className="col-8 col-sm-6">
                             <label className="form-label">¿Cómo considera su saludo?</label>
                             <select name="datosMedic_salud"onChange={handleInput} className="col-12 form-select list-group-item " >
                                 <option defaultValue>Seleccionar</option>
@@ -436,7 +436,7 @@ export const UserRegScreen = () => {
                                 <option defaultValue="3">Promedio</option>
                             </select>                 
                         </div>
-                        <div className="col-6 col-md-4">
+                        <div className="col-8 col-sm-6">
                             <label className="form-label" >¿Practica algun deporte?:</label>
                             <select name="datosMedic_dep" onChange={handleInput}className="col-12 form-select list-group-item " >
                                 <option defaultValue>Seleccionar</option>
@@ -446,11 +446,11 @@ export const UserRegScreen = () => {
                         </div>
                      </div>
                      <div className="row pt-4">
-                        <div className="col-4">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Grupo sanguinio:</label>
                             <input  name="datosMedic_gpoSan" onChange={handleInput}className="col-12 list-group-item" placeholder="-Na- en caso de no saber" />
                         </div> 
-                        <div className="col-8 col-md-7 row">
+                        <div className="col-12 col-sm-6 row">
                              <div className="col-6">
                                  <label className="form-label">Fuma:</label>
                                  <select name="datosMedic_fum"onChange={handleInput} className="col-12 form-select list-group-item " >
@@ -484,7 +484,7 @@ export const UserRegScreen = () => {
                         </div> 
                     </div>
                     <div className="row pt-4">
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Cirugías:</label>
                             <div className="col-8 col-md-6">
                                 <select name="datosMedic_cir"onChange={handleInput} className="col-6 form-select list-group-item " >
@@ -494,7 +494,7 @@ export const UserRegScreen = () => {
                                 </select> 
                             </div>   
                        </div> 
-                       <div className="col-6 ">
+                       <div className="col-12 col-sm-6">
                             <label className="form-label">Accidentes (Ultimo año):</label>
                             <div className="col-8 col-md-6">
                                 <select name="datosMedic_acc" onChange={handleInput}className="col-6 form-select list-group-item " >
@@ -506,11 +506,11 @@ export const UserRegScreen = () => {
                        </div> 
                     </div>
                     <div className="row pt-4">
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Detalle su(s) cirugia(s):</label>
                             <textarea name="datosMedic_detCir" onChange={handleInput} className="col-12 list-group-item" placeholder="Detalle la cirugia" />
                         </div> 
-                        <div className="col-6">
+                        <div className="col-12 col-sm-6">
                             <label className="form-label">Detalle su(s) accidentes(s):</label>
                             <textarea  name="datosMedic_detAcc" onChange={handleInput}className="col-12 list-group-item" placeholder="Detalle un poco" />
                         </div> 
@@ -524,7 +524,7 @@ export const UserRegScreen = () => {
 
                     <div className="row pt-4">
                             <label className="form-label">Selecciona 3 areas de espcialidad a las cuales te gustaria postular:</label>
-                            <div className="col-4 ">
+                            <div className="col-12 col-sm-4 ">
                                     <select name="ultDatos_esp1"onChange={handleInput} className="col- form-select list-group-item " >
                                             <option defaultValue>Seleccionar</option>
                                             <option defaultValue="1">Ganadería. </option>
@@ -550,7 +550,7 @@ export const UserRegScreen = () => {
                                     </select> 
                                     
                             </div>
-                            <div className="col-4 ">
+                            <div className="col-12 col-sm-4 py-4">
                             <select name="ultDatos_esp2" onChange={handleInput}className="col- form-select list-group-item " >
                                             <option defaultValue>Seleccionar</option>
                                             <option defaultValue="1">Ganadería. </option>
@@ -575,7 +575,7 @@ export const UserRegScreen = () => {
                                             <option defaultValue="20">Ventas. </option>
                                     </select>
                             </div>
-                            <div className="col-4 ">
+                            <div className="col-12 col-sm-4 ">
                             <select name="ultDatos_esp3" onChange={handleInput}className="col- form-select list-group-item " >
                                             <option defaultValue>Seleccionar</option>
                                             <option defaultValue="1">Ganadería. </option>

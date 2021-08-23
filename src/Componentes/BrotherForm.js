@@ -14,11 +14,11 @@ export const BrotherForm = ({cantidad}) => {
         </div>
         <div className="row  py-2">
             
-            <div className="col-6">
+            <div className="col-3">
                 <label className="form-label">Edad:</label>
                 <input className="col-12 list-group-item" placeholder="Edad" type="Number"/>
             </div>
-            <div className="col-6">
+            <div className="col-8">
                 <label className="form-label" >Ocupacion:</label>
                 <input className="col-12 list-group-item" placeholder="Ocupacion" type="text"/>
             </div>

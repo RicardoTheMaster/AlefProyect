@@ -21,12 +21,12 @@ export const BasicRouter = () => {
 
             <div className="background">
                 <Switch>
-                    <Route exact path="/" component={HomeScreen}/>
+                    <Route exact path="/AlefProyect/" component={HomeScreen}/>
                     <Route exact path="/Login" component={LoginScreen}/>
                     <Route exact path="/UsReg" component={UserRegScreen}/>
                     <Route exact path="/BuReg" component={BussRegScreen}/>
 
-                    <Redirect to="/"/>
+                    <Redirect to="/AlefProyect/"/>
                 </Switch>
             </div>
             <Footer />

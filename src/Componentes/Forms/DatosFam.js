@@ -9,11 +9,11 @@ export const DatosFam = ({handleInput,handleInputChange,valor,newvalor,hermanos}
                 <hr />
                 
                     <div className="row pt-4">
-                        <div className="col-6">
+                        <div className="col-10 col-sm-6">
                             <label className="form-label">Padre:</label>
                             <input name="familia_nomP"onChange={handleInput} className="col-12 list-group-item" placeholder="-Na- Si no tienes" type="text"/>
                         </div>
-                        <div className="col-6">
+                        <div className="col-10 col-sm-10">
                             <label className="form-label">Madre:</label>
                             <input name="familia_nomM"onChange={handleInput}className="col-12 list-group-item" placeholder="-Na- Si no tienes" type="text"/>
                         </div>

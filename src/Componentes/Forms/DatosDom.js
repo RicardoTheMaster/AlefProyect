@@ -50,17 +50,16 @@ export const DatosDom = ({handleInput}) => {
     <div className="pt-2">
         <hr/><h4 className="text">Domicilio</h4><hr/> 
         <div className="row pt-2">
-            <DivLaIn col="-5" label="Calle" name="domicilio_calle" handleInput={handleInput} place="Andador, avenida, etc."/>
-            <DivLaIn col="-2" label="No. Ext" name="domicilio_noExt" handleInput={handleInput} place="111" type="number"/>
-            <DivLaIn col="-5" label="Col/Fracc" name="domicilio_fracc" handleInput={handleInput} place="Residencial, zona, etc."/>
+            <DivLaIn col="-9 col-sm-5" label="Calle" name="domicilio_calle" handleInput={handleInput} place="Andador, avenida, etc."/>
+            <DivLaIn col="-3 col-sm-2" label="No. Ext" name="domicilio_noExt" handleInput={handleInput} place="111" type="number"/>
         </div>
         <div className="row pt-4">
-            <DivLaIn col="-6" label="Col/Fracc" name="domicilio_fracc" handleInput={handleInput} place="Residencial, zona, etc."/>
-            <DivLaIn col="-6" label="Municipio " name="domicilio_mun" handleInput={handleInput} place="Ciudad, capital, localidad, etc."/>
+            <DivLaIn col="-8 col-sm-6" label="Col/Fracc" name="domicilio_fracc" handleInput={handleInput} place="Residencial, zona, etc."/>
+            <DivLaIn col="-8 col-sm-6" label="Municipio " name="domicilio_mun" handleInput={handleInput} place="Ciudad, capital, localidad, etc."/>
         </div>
         <div className="row pt-4">
-            <DivLaSel col="-6" label="Estado" name="domicilio_estado" handleInput={handleInput} Opts={Opts}/>
-            <DivLaSel col="-6" label="Estado Civil" name="domicilio_estCiv" handleInput={handleInput} Opts={Opts2}/>  
+            <DivLaSel col="-8 col-sm-6" label="Estado" name="domicilio_estado" handleInput={handleInput} Opts={Opts}/>
+            <DivLaSel col="-8 col-sm-6" label="Estado Civil" name="domicilio_estCiv" handleInput={handleInput} Opts={Opts2}/>  
         </div>  
     </div>
     )

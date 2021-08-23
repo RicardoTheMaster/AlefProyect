@@ -28,16 +28,16 @@ export const DatosEsc = ({handleInput}) => {
                     <DivLaSel col="-6" label="Concluido" name="escolares_nvlAcaConc" handleInput={handleInput} Opts={Opts2}/>
                 </div>
                 <div className="row pt-2 "> 
-                    <DivLaIn col="-6" label='Carrera' name='escolares_carrera' handleInput={handleInput} place='Carrera/Especialidad/Etc.'  />
-                <div className="col-6">
-                    <label className="col-10 form-label pt-2" >¿Tienes titulo?</label>
-                    <div className="col-12 ">
-                        <DivLaRad name="escolares_titulo" handleInput={handleInput} value="Si"/>
-                        <DivLaRad name="escolares_titulo" handleInput={handleInput} value="No"/>
-                        <DivLaRad name="escolares_titulo" handleInput={handleInput} value="En proceso"/>
+                    <DivLaIn col="-10 col-sm-6" label='Carrera' name='escolares_carrera' handleInput={handleInput} place='Carrera/Especialidad/Etc.'  />
+                    <div className="col-8 col-sm-6">
+                        <label className="col-10 form-label pt-2" >¿Tienes titulo?</label>
+                        <div className="col-12 ">
+                            <DivLaRad name="escolares_titulo" handleInput={handleInput} value="Si"/>
+                            <DivLaRad name="escolares_titulo" handleInput={handleInput} value="No"/>
+                            <DivLaRad name="escolares_titulo" handleInput={handleInput} value="En proceso"/>
+                        </div>
                     </div>
                 </div>
-        </div>
     
     </div>
     

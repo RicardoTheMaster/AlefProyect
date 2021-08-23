@@ -37,18 +37,13 @@ export const Footer = () => {
     <div className="d-flex justify-content-between py-4 my-4 border-top">
       <p>© 2021 Company, Inc. All rights reserved.</p>
       <ul className="list-unstyled d-flex">
-        <li className="ms-3"><NavLink exact to="/"><img src={wsp} className="bi" width="33" height="33" alt='wsp'></img></NavLink></li>
-        <li className="ms-3"><NavLink exact to="/"><img src={face} className="bi" width="30" height="30" alt='a'></img></NavLink></li>
-        <li className="ms-3"><NavLink exact to="/"><img src={inst} className="bi" width="30" height="30" alt='a'></img></NavLink></li>
+        
+        <li className="ms-3"><NavLink exact to="/AlefProyect/"><img src={wsp} className="bi" width="33" height="33" alt='wsp'></img></NavLink></li>
+        <li className="ms-3"><NavLink exact to="/AlefProyect/"><img src={face} className="bi" width="30" height="30" alt='fb'></img></NavLink></li>
+        <li className="ms-3"><NavLink exact to="/AlefProyect/"><img src={inst} className="bi" width="30" height="30" alt='insta'></img></NavLink></li>
       </ul>
     </div>
   </footer>
 </div>
     )
 }
-/*
-57-59
-<svg className="bi" width="24" height="24"><use to="#wsp"></use></svg>
-<svg className="bi" width="24" height="24"><use to="#instagram"></use></svg>
-<svg className="bi" width="24" height="24"><use to="#facebook"></use></svg>
-*/

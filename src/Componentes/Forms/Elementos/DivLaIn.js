@@ -4,7 +4,7 @@ export const DivLaIn = ({handleInput, place,name,label,col,type="text",disabled=
     
     return (
         <div className={'col'+col}>
-            <label className="form-label">{label}: </label>
+            <label className="form-label pt-2">{label}: </label>
             <input name={name} onChange={handleInput}
             className="col-12 list-group-item"placeholder={place} type={type} disabled={disabled} value={value}/>
         </div>

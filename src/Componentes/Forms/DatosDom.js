@@ -1,9 +1,10 @@
 import React from 'react'
+import { useForm } from '../../Hooks/useForm'
 import { DivLaIn } from './Elementos/DivLaIn'
 import { DivLaSel } from './Elementos/DivLaSel'
 
-export const DatosDom = ({handleInput}) => {
-    
+export const DatosDom = () => {
+    const {handleInputForm}=useForm();
             const Opts={
                 'Seleccionar':'32',
                 'Aguascalientes':'0',
@@ -50,16 +51,16 @@ export const DatosDom = ({handleInput}) => {
     <div className="pt-2">
         <hr/><h4 className="text">Domicilio</h4><hr/> 
         <div className="row pt-2">
-            <DivLaIn col="-9 col-sm-5" label="Calle" name="domicilio_calle" handleInput={handleInput} place="Andador, avenida, etc."/>
-            <DivLaIn col="-3 col-sm-2" label="No. Ext" name="domicilio_noExt" handleInput={handleInput} place="111" type="number"/>
+            <DivLaIn col="-9 col-sm-5" label="Calle" name="domicilio_calle" handleInput={handleInputForm} place="Andador, avenida, etc."/>
+            <DivLaIn col="-3 col-sm-2" label="No. Ext" name="domicilio_noExt" handleInput={handleInputForm} place="111" type="number"/>
         </div>
         <div className="row pt-4">
-            <DivLaIn col="-8 col-sm-6" label="Col/Fracc" name="domicilio_fracc" handleInput={handleInput} place="Residencial, zona, etc."/>
-            <DivLaIn col="-8 col-sm-6" label="Municipio " name="domicilio_mun" handleInput={handleInput} place="Ciudad, capital, localidad, etc."/>
+            <DivLaIn col="-8 col-sm-6" label="Col/Fracc" name="domicilio_fracc" handleInput={handleInputForm} place="Residencial, zona, etc."/>
+            <DivLaIn col="-8 col-sm-6" label="Municipio " name="domicilio_mun" handleInput={handleInputForm} place="Ciudad, capital, localidad, etc."/>
         </div>
         <div className="row pt-4">
-            <DivLaSel col="-8 col-sm-6" label="Estado" name="domicilio_estado" handleInput={handleInput} Opts={Opts}/>
-            <DivLaSel col="-8 col-sm-6" label="Estado Civil" name="domicilio_estCiv" handleInput={handleInput} Opts={Opts2}/>  
+            <DivLaSel col="-8 col-sm-6" label="Estado" name="domicilio_estado" handleInput={handleInputForm} Opts={Opts}/>
+            <DivLaSel col="-8 col-sm-6" label="Estado Civil" name="domicilio_estCiv" handleInput={handleInputForm} Opts={Opts2}/>  
         </div>  
     </div>
     )

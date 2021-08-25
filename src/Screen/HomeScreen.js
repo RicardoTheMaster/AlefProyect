@@ -4,6 +4,8 @@ export const HomeScreen = () => {
     return (
         <div>
             <h1>Home inicio</h1>
+           
         </div>
+        
     )
 }

@@ -23,6 +23,7 @@ export const Header = () => {
                 <button type="button" className="btn btn-outline-primary me-2">Iniciar Sesion</button>
             </div>
         </header>
-  </div>
+        
+        </div>
     )
 }

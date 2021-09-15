@@ -1,27 +1,22 @@
 export const SN={
-    Seleccionar:'0',
     Si:'1',
     No:'2',
 }
 export const SEX={
-    Seleccionar:'0',
     Masculino:'1',
     Femenino:'2',
 }
 export const NAC={
-    Seleccionar:'0',
     Mexicana:'1',
     Estadounidense:'2',
 
 }
 export const BRM={
-    Seleccionar:'0',
     Buena:'1',
     Regular:'2',
     Mala:'3',
 }
 export const ESP={
-    Seleccionar:'21',
     Ganadería:'1' ,
     Software: '2',
     Minería:  '3',

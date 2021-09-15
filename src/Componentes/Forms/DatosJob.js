@@ -1,8 +1,8 @@
 import React from 'react'
 import { useForm } from '../../Hooks/useForm'
-import { DivLaBtn } from './Elementos/DivLaBtn'
-import { DivLaIn } from './Elementos/DivLaIn'
-import { DivLaTxt } from './Elementos/DivLaTxt'
+import { DivLaBtn } from '../Elementos/DivLaBtn'
+import { DivLaIn } from '../Elementos/DivLaIn'
+import { DivLaTxt } from '../Elementos/DivLaTxt'
 
 export const DatosJob = () => {
     const {handleInputForm}=useForm();

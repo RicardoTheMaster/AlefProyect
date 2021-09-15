@@ -1,7 +1,7 @@
-import React from 'react'
-import { useForm } from '../../Hooks/useForm'
-import { BrotherForm } from '../BrotherForm'
-import { DivLaIn } from './Elementos/DivLaIn'
+import React from 'react';
+import { useForm } from '../../Hooks/useForm';
+import { BrotherForm } from '../BrotherForm';
+import { DivLaIn } from '../Elementos/DivLaIn';
     
 export const DatosFam = () => {
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from '../../Hooks/useForm';
-import { DivLaIn } from './Elementos/DivLaIn'
+import { DivLaIn } from '../Elementos/DivLaIn'
 
 export const DatosRefV = () => {
     const {handleInputForm}=useForm();

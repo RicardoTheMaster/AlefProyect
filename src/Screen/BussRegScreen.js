@@ -1,9 +1,10 @@
 import React from 'react'
+import { Prueba } from '../Componentes/Prueba'
 
 export const BussRegScreen = () => {
     return (
         <div>
-            <h1>Registro de empresas</h1>
+            <Prueba />
         </div>
     )
 }

@@ -16,11 +16,14 @@ export const Header = () => {
                 <li><NavLink exact to="/AlefProyect/"      activeClassName="link-dark" className="nav-item nav-link px-2 ">Home</NavLink></li>
                 <li><NavLink exact to="/BuReg" activeClassName="link-dark" className="nav-item nav-link px-2">Empresas</NavLink></li>
                 <li><NavLink exact to="/UsReg" activeClassName="link-dark" className="nav-item nav-link px-2">Registro</NavLink></li>
-                
+                <li><NavLink exact to="/Info" activeClassName="link-dark" className="nav-item nav-link px-2">Info</NavLink></li>
+
             </ul>
             
+     
             <div className="col-md-3 text-end">
-                <button type="button" className="btn btn-outline-primary me-2">Iniciar Sesion</button>
+            <NavLink exact to="/Login"><button type="button" className="btn btn-outline-primary me-2">Iniciar Sesion</button>
+            </NavLink>
             </div>
         </header>
         

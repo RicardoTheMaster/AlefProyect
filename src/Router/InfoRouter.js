@@ -1,4 +1,3 @@
-
 import React from 'react'
 import {
   BrowserRouter as Router,
@@ -7,6 +6,7 @@ import {
 } from "react-router-dom";
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { Footer } from '../Componentes/Footer';
+import { DatosPers } from '../Componentes/Forms/DatosPers';
 
 import { Header } from '../Componentes/Header';
 import { BussRegScreen } from '../Screen/BussRegScreen';
@@ -16,23 +16,19 @@ import { InfoScreen } from '../Screen/InfoScreen';
 import { LoginScreen } from '../Screen/LoginScreen';
 import { UserRegScreen } from '../Screen/UserRegScreen';
 
-export const BasicRouter = () => {
+export const InfoRouter = () => {
     return (
         <Router>
             <Header />
 
-            <div className="container">
+           
                 <Switch>
-                    <Route exact path="/AlefProyect/" component={HomeScreen}/>
-                    <Route exact path="/Login" component={LoginScreen}/>
-                    <Route exact path="/UsReg" component={UserRegScreen}/>
-                    <Route exact path="/BuReg" component={BussRegScreen}/>
-                    <Route exact path="/FirstReg" component={FirstUserRegScreen}/>
-                    <Route path="/Info" component={InfoScreen}/>
-
-                    <Redirect to="/AlefProyect/"/>
+                    <Route  path="/Personales" component={DatosPers}/>
+                    <Route exact path="/Info/Escolares" component={LoginScreen}/>
+                    <Route exact path="/Info/Laborales" component={UserRegScreen}/>
+                    <Route exact path="/Info/Extras" component={BussRegScreen}/>
                 </Switch>
-            </div>
+           
             <Footer />
         </Router>
     )

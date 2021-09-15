@@ -93,7 +93,6 @@ const handleReset = () => {
         consultar con alguien mas. De ser posible contactar directamente con el personal de Alef Global
     </span>
         <div className="row border">
-            <form className="" >
                     <Stepper activeStep={activeStep} orientation="vertical">
                         {steps.map((label, index) => (
                             <Step key={label}>
@@ -131,8 +130,7 @@ const handleReset = () => {
                             </Button>
                             </Paper>
                     )}
-                                                
-            </form>
+                     
         </div>
     </div>
     )

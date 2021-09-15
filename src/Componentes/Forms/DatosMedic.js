@@ -1,9 +1,9 @@
 import React from 'react'
 import { useForm } from '../../Hooks/useForm';
-import { DivLaIn } from './Elementos/DivLaIn';
-import { DivLaSel } from './Elementos/DivLaSel';
-import { DivLaTxt } from './Elementos/DivLaTxt';
-import { BRM, SN } from './Elementos/Opts'
+import { DivLaIn } from '../Elementos/DivLaIn';
+import { DivLaSel } from '../Elementos/DivLaSel';
+import { DivLaTxt } from '../Elementos/DivLaTxt';
+import { BRM, SN } from '../Elementos/Opts'
 
 export const DatosMedic = () => {
     //                    <DivLaSel col="-5 col-md-5" label="Sexo" name="datosPers_sex" handleInput={handleInput} Opts={Opts}/>

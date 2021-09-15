@@ -1,5 +1,5 @@
 import React from 'react'
-import { DivLaIn } from './Forms/Elementos/DivLaIn'
+import { DivLaIn } from '../Componentes/Elementos/DivLaIn'
 
 export const BrotherForm = ({cantidad,handleBro}) => {
     return (

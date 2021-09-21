@@ -1,21 +1,21 @@
 import { Field } from 'formik'
 import React from 'react'
 import "animate.css"
-export const Inp = ({col,name,label,place,type="text",value,errors, touched, disabled=false,change,as, ...rest}) => {
+export const Radio = ({col,name,label,errors, touched, ...rest}) => {
     return (
         <div className={'col'+col}>
-        <label htmlFor={name} className="form-label pt-2">{label}: </label>
+        <label htmlFor={name} className="form-label pt-2"> 
+        {label}&nbsp;&nbsp;
             <Field 
-             as={as}
-             type={type}
+             type="radio"
              id={name}
              name={name}
-             placeholder={place}
-             disabled={disabled}
-             autoComplete="off"
-             className="col-12 list-group-item"
+             className="ml-4"
+             value={label}
              {...rest}
             />
+            
+        </label>
             {errors && touched ? (
              <div className="ERROR animate__animated animate__wobble">{errors}</div>
            ) : null}

@@ -30,7 +30,10 @@ export const DatosPers = () => {
                     datosPers_curp:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Introduce tu CURP!')
                                        .matches(/^[aA-zZ0-9]+$/,"¡Verifica!"),
                     datosPers_rfc:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Introduce tu RFC!')
+                                       .matches(/^[aA-zZ0-9]+$/,"¡Verifica!"), 
+                    datosPers_nss:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Introduce tu RFC!')
                                        .matches(/^[aA-zZ0-9]+$/,"¡Verifica!"),
+
                 });
     return (
 
@@ -51,6 +54,7 @@ export const DatosPers = () => {
                             datosPers_nac:'',
                             datosPers_curp:'',
                             datosPers_rfc:'',
+                            datosPers_nss:'',
                         }}
 
                         onSubmit={(valores, {resetForm})=>{
@@ -95,18 +99,27 @@ export const DatosPers = () => {
                                     <Inp errors={errors.datosPers_rfc} touched={touched.datosPers_rfc} col="-7" label='RFC' name='datosPers_rfc'  />
                                     <DivLaBtn col="-5 " label="¡CONSULTALA!" place="CONSULTAR" />         
                                 </div>
+                                <div className="row pb-4 ">
+                                    <Inp errors={errors.datosPers_nss} touched={touched.datosPers_nss} col="-7" label='NSS' name='datosPers_nss'  />
+                                    <DivLaBtn col="-5 " label="¡CONSULTALA!" place="CONSULTAR" />         
+                                </div>
 
 
 
-                                <div class="row justify-content-evenly">
-                                    <div class="col-4">
-                                        <button type="" className="btn btn-outline-primary "> Editar </button>
+                                <div className="row justify-content-center pt-5">
+                                    <div className="col-4 text-center">
+                                        <button type="" className="btn btn-secondary btn-lg"> Editar </button>
                                     </div>
-                                    <div class="col-4">
-                                        <button type="submit" className="btn btn-primary "> GUARDAR </button>
+                                    <div className="col-4 text-center">
+                                        <button type="submit" className="btn btn-primary btn-lg"> GUARDAR </button>
                                     </div>
-                                    <div class="col-4">
-                                        <button type="" className="btn btn-outline-primary "> Limpiar </button>
+                                </div>
+                                <div className="row pt-1">
+                                    <div className="col-6 text-start">
+                                        <button type="" className="btn btn-outline-info" > Anterior </button>
+                                    </div>
+                                    <div className="col-6 text-end">
+                                        <button type="" className="btn btn-outline-info"> Siguiente </button>
                                     </div>
                                 </div>
                               

@@ -4,8 +4,7 @@ import { DatosEsc } from '../Componentes/Forms/DatosEsc'
 import { DatosJob } from '../Componentes/Forms/DatosJob'
 import { DatosMedic } from '../Componentes/Forms/DatosMedic'
 import { DatosPers } from '../Componentes/Forms/DatosPers'
-import { DatosRefP } from '../Componentes/Forms/DatosRefP'
-import { InfoRouter } from '../Router/InfoRouter'
+import { Refer } from '../Componentes/Forms/Refer'
 
 export const InfoScreen = () => {
     return (
@@ -34,7 +33,7 @@ export const InfoScreen = () => {
             <Switch>
                     <Route exact path="/Info/Personales" component={DatosPers}/>
                     <Route exact path="/Info/Escolares" component={DatosEsc}/>
-                    <Route exact path="/Info/Laborales" component={DatosJob}/>
+                    <Route exact path="/Info/Laborales" component={Refer}/>
                     <Route exact path="/Info/Medicos" component={DatosMedic}/>
             </Switch>
             </div>

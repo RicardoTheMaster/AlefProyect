@@ -4,10 +4,11 @@ import { Inp } from '../Elementos/Inp'
 import * as Yup from "yup";
 import { Sel } from '../Elementos/Sel';
 import { Radio } from '../Elementos/Radio';
+import "animate.css"
+
 
 export const DatosEsc = () => {
     const Opts={
-        Seleccionar:'0',
         Escuela:'1',
         Primaria:'2',
         Secundaria:'3',
@@ -34,7 +35,6 @@ export const DatosEsc = () => {
 
     }
     const Opts5={
-        '1':'1',
         '2':'2',
         '3':'2',
         'Mas de 3':'2',
@@ -49,47 +49,47 @@ export const DatosEsc = () => {
     }
     const [enviado, setEnviado] = useState(false);
     const [Pos, setPos] = useState('No')
+    const [nvl, setnvl] = useState('')
+    const [year, setYear] = useState(0)
 
     const Personales=Yup.object().shape({
-                    refP1_nom:Yup.string("¡Solo letras!").
-                        min(2,'¡Muy corto!')
-                        .max(50, '¡Muy largo!')
-                        .required('¡Introduce un nombre!')
-                        .matches(/^[aA-zZ\s.]+$/,"¡Solo letras!"),
-                    refP1_ocup:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Ocupación!')
-                                      .matches(/^[aA-zZ\s.]+$/,"¡Solo letras!"),
-                    refP1_dom:Yup.string().min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Domicilio!')
-                                      .matches(/^[aA-zZ\s0-9#.]+$/,"¡Unico signo permitido #!"),
-                    refP1_tel:Yup.number("¡Solo numeros!").min(1000000000,'¡10 o 12 digitos!').max(999999999999, '¡Muy largo!').required('¡Telefono/Celular!'),
-                    refP2_nom:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(50, '¡Muy largo!').required('¡Introduce un nombre!').matches(/^[aA-zZ\s.]+$/,"¡Solo letras!"),
-                    refP2_ocup:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Ocupación!')
-                                  .matches(/^[aA-zZ\s.]+$/,"¡Solo letras!"),
-                    refP2_dom:Yup.string().min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Domicilio!')
-                                  .matches(/^[aA-zZ\s0-9#.]+$/,"¡Unico signo permitido #!"),
-                    refP2_tel:Yup.number("¡Solo numeros!").min(1000000000,'¡10 o 12 digitos!').max(999999999999, '¡Muy largo!').required('¡Telefono/Celular!'),
-                });
+                    esc_nvlaca:Yup.string("¡HACKERMAN!").required('¡Escoge!'),
+                    esc_avan:Yup.string("¡HACKERMAN!").required('¡Escoge!'),
+                    esc_perIM:Yup.string("¡HACKERMAN!").required('¡Escoge!'),
+                    esc_perIA:Yup.number("¡Solo numeros!").min(1970,'¡Eres muy mayor!').max(2030, '¡No dura tanto!').required('¡Año de ingreso!'),
+                    esc_perTM:Yup.string("¡HACKERMAN!").required('¡Escoge!'),
+                    esc_perTA:Yup.number("¡Solo numeros!").min(year+2,'¡Muy corto!').max(year+10, '¡No dura tanto!').required('¡Año de término!'),
+                    esc_pos:Yup.string("¡HACKERMAN!"),
+                    esc_posperIA:Yup.number("¡Solo numeros!").min(1970,'¡Eres muy mayor!').max(2030, '¡No dura tanto!'),
+                    esc_posperTA:Yup.number("¡Solo numeros!").min(year+2,'¡Muy corto!').max(year+10, '¡No dura tanto!'),
+                    esc_posNom:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!')
+                    .matches(/^[aA-zZ\s0-9.]+$/,"¡Caracteres no permitidos!"),
+
+                  });
     return (
 
-        <div className="pt-2">
+        <div className="pt-2 animate__animated animate__backInUp  ">
                 <hr />
             <h4 className="text">Datos Escolares</h4>
                 <hr />          
               <Formik
                         initialValues={{
-                            rad:'1',
-                            refP1_nom:'',
-                            refP1_ocup:'',
-                            refP1_dom:'',
-                            refP1_tel:'',
-                            refP2_nom:'',
-                            refP2_ocup:'',
-                            refP2_dom:'',
-                            refP2_tel:'',
+                            esc_pos:'',
+                            esc_nvlaca:'',
+                            esc_avan:'',
+                            esc_perIM:'',
+                            esc_perIA:'',
+                            esc_perTM:'',
+                            esc_perTA:'',
+                            esc_Npos:'',
+                            esc_nvlaca:'',
+                            esc_nvlaca:'',
+                            esc_nvlaca:'',
+                            esc_nvlaca:'',
 
                         }}
 
                         onSubmit={(valores, {resetForm})=>{
-                            console.log(valores)
                             setEnviado(true);
                             setTimeout(()=>setEnviado(false),5000);
                         }}
@@ -98,11 +98,25 @@ export const DatosEsc = () => {
                         validationSchema={Personales}
 
                         validate={(e)=>{
-                           if(e.rad && e.rad==='Si'){
-                               setPos('Si')
-                           }else if(e.rad && e.rad==='En proceso'){
-                            setPos('En Proceso')
-                           }
+                            if( e.esc_nvlaca==="Posgrado"){
+                                setnvl(e.esc_nvlaca)
+                                if(e.esc_pos && e.esc_pos==='Si' ){
+                                    setPos('Si')
+                                }else if(e.esc_pos && e.esc_pos==='En proceso'){
+                                    setPos('En Proceso')
+                                }else{
+                                    setPos('No')
+                                }
+                            }else{
+                                setnvl(e.esc_nvlaca)
+                                setPos('No')
+                            }
+                            
+                            if(e.esc_perIA){
+                                setYear(e.esc_perIA)
+                            }
+                            
+                           
                         }}
                         
                         >
@@ -135,19 +149,27 @@ export const DatosEsc = () => {
                                         </div>
                                     </div>
                                 </div>
-
-                                <div className="row pt-4 text-center">
-                                    <label className="col-4 form-label pt-2 fw-bold">¿Tienes posgrado?</label>
-                                    <Radio col ="-1" name="rad" label="Si" />
-                                    <Radio col ="-1" name="rad" label="No" />
-                                    <Radio col ="-2" name="rad" label="En proceso" />
-                                </div>
+                                {
+                                    nvl==='Posgrado' &&
+                                    <div className="row pt-4 text-center animate__animated animate__backInUp ">
+                                    <label className="col-4 form-label pt-2 fw-bold">¿Tienes 2 o mas posgrados?</label>
+                                    <Radio col ="-1" name="esc_pos" label="Si" />
+                                    <Radio col ="-1" name="esc_pos" label="No" errors={errors.esc_pos} touched={touched.esc_pos}/>
+                                    <Radio col ="-2" name="esc_pos" label="En proceso" />
+                                    </div>
+                                }
+                                
                                 {
                                     (Pos==='Si' || Pos ==='En Proceso') &&(
-                                        <>
+                                        <div className="animate__animated animate__backInUp pt-4">
+                                        <hr/>
                                         {(Pos==='Si') && (
-                                            <div className="text-center">
-                                            <Sel errors={errors.esc_perTM} touched={touched.esc_perTM} col="-3" label='¿Cuantos?' name='esc_perTM' Opts={Opts5} />
+                                            <div className="row pt-2 text-center">
+                                                
+                                                    <Sel errors={errors.esc_Npos} touched={touched.esc_Npos} col="-3" label='¿Cuantos?' name='esc_Npos' Opts={Opts5} />
+                                                <div className="col-9">
+                                                    <label className="form-label pt-2 col-6 align-bottom fw-bold animate__animated animate__flash animate__delay-2s " >Por favor, ingresa los datos del ultimo ó del que creas es mas importante.</label>
+                                                </div>
                                             </div>
                                         )}
                                         <div className="row pt-2 ">
@@ -157,25 +179,24 @@ export const DatosEsc = () => {
                                             </div>
                                             <div className="col-6">
                                                 <div className="row">
-                                                    <Sel errors={errors.esc_perIM} touched={touched.esc_perIM} col="-8 sm-5" label='Mes' name='esc_perIM' Opts={Opts3} />
-                                                    <Inp errors={errors.esc_perIA} touched={touched.esc_perIA} col="-4 sm-3" label="Año" name="esc_perIA" place="2010" type="number"/>
+                                                    <Sel errors={errors.esc_posperIM} touched={touched.esc_posperIM} col="-8 sm-5" label='Mes' name='esc_posperIM' Opts={Opts3} />
+                                                    <Inp errors={errors.esc_posperIA} touched={touched.esc_posperIA} col="-4 sm-3" label="Año" name="esc_posperIA" place="2010" type="number"/>
                                                 </div>
                                             </div>
                                             
                                             <div className="col-6">
                                                 <div className="row">
-                                                    <Sel errors={errors.esc_perTM} touched={touched.esc_perTM} col="-8 sm-5" label='Mes' name='esc_perTM' Opts={Opts3} />
-                                                    <Inp errors={errors.esc_perTA} touched={touched.esc_perTA} col="-4 sm-3" label="Año" name="esc_perTA" place="2021" type="number"/>
+                                                    <Sel errors={errors.esc_posperTM} touched={touched.esc_posperTM} col="-8 sm-5" label='Mes' name='esc_posperTM' Opts={Opts3} />
+                                                    <Inp errors={errors.esc_posperTA} touched={touched.esc_posperTA} col="-4 sm-3" label="Año" name="esc_posperTA" place="2021" type="number"/>
                                                 </div>
                                             </div>
 
                                             <div className="row pt-2 ">
-                                                <Sel errors={errors.esc_perIM} touched={touched.esc_perIM} col="-12 col-sm-6" label='¿Cual es tu posgrado?' name='esc_perIM' Opts={Opts6} />
-
-                                                <Inp errors={errors.refP2_dom} touched={touched.refP2_dom} col="-12 col-sm-6" label="Titulo" name="refP2_dom" place="En sistemas, En matematicas, etc."/>
+                                                <Sel errors={errors.esc_posDM} touched={touched.esc_posDM} col="-12 col-sm-6" label='¿Cual es tu posgrado?' name='esc_posDM' Opts={Opts6} />
+                                                <Inp errors={errors.esc_posNom} touched={touched.esc_posNom} col="-12 col-sm-6" label="Titulo" name="esc_posNom" place="En sistemas, En matematicas, etc."/>
                                             </div>
                                         </div>
-                                        </>
+                                        </div>
 
                                     )
                                 }
@@ -207,9 +228,10 @@ export const DatosEsc = () => {
                                     
                                     )
                                 }
-                               {
+                                {
                                     console.log(errors)
-                               }
+                                }
+                                
                             </Form>
                         ) 
                         }
@@ -218,26 +240,3 @@ export const DatosEsc = () => {
         </div>
     )
 }
-/*
-  <div className="pt-2">
-             <hr/><h4 className="text">Escolaridad</h4><hr/>
-            <h5 className=" fs-6">Ultimo grado cursado </h5>
-                <div className="row pt-2 ">
-                    <DivLaSel col="-6" label="Nivel Academico" name="escolares_nvlAca" handleInput={handleInputForm} Opts={Opts}/>
-                    <DivLaSel col="-6" label="Avance" name="escolares_nvlAcaConc" handleInput={handleInputForm} Opts={Opts2}/>
-                </div>
-                <div className="row pt-2 "> 
-                    <DivLaIn col="-10 col-sm-6" label='Carrera' name='escolares_carrera' handleInput={handleInputForm} place='Carrera/Especialidad/Etc.'  />
-                    <div className="col-8 col-sm-6">
-                        <label className="col-10 form-label pt-2" >¿Tienes titulo?</label>
-                        <div className="col-12 ">
-                            <DivLaRad name="escolares_titulo" handleInput={handleInputForm} value="Si"/>
-                            <DivLaRad name="escolares_titulo" handleInput={handleInputForm} value="No"/>
-                            <DivLaRad name="escolares_titulo" handleInput={handleInputForm} value="En proceso"/>
-                        </div>
-                    </div>
-                </div>
-    
-    </div>
-
-*/

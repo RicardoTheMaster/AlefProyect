@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route,Switch,NavLink } from 'react-router-dom'
 import { DatosEsc } from '../Componentes/Forms/DatosEsc'
-import { DatosJob } from '../Componentes/Forms/DatosJob'
+import { DatosAdic } from '../Componentes/Forms/DatosAdic'
 import { DatosMedic } from '../Componentes/Forms/DatosMedic'
 import { DatosPers } from '../Componentes/Forms/DatosPers'
 import { Refer } from '../Componentes/Forms/Refer'
@@ -23,6 +23,7 @@ export const InfoScreen = () => {
                     <li><NavLink exact to="/Info/Laborales" activeClassName="active" className="nav-item nav-link px-4">Laborales</NavLink></li>
                     <li><NavLink exact to="/Info/Escolares" activeClassName="active" className="nav-item nav-link px-4">Escolares</NavLink></li>
                     <li><NavLink exact to="/Info/Medicos" activeClassName="active" className="nav-item nav-link px-4">Medicos</NavLink></li>
+                    <li><NavLink exact to="/Info/Extras" activeClassName="active" className="nav-item nav-link px-4">Extras</NavLink></li>
 
                     </ul>
                    
@@ -35,6 +36,7 @@ export const InfoScreen = () => {
                     <Route exact path="/Info/Escolares" component={DatosEsc}/>
                     <Route exact path="/Info/Laborales" component={Refer}/>
                     <Route exact path="/Info/Medicos" component={DatosMedic}/>
+                    <Route exact path="/Info/Extras" component={DatosAdic}/>
             </Switch>
             </div>
         </div>

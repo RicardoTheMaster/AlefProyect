@@ -38,9 +38,7 @@ code {
   box-shadow: 0px 0px 20px #3727ED;
   border-radius: 2%;
 }
-.borde{
-  border: 10pc solid red;
-}
+
 .enviado{
   color:green
 }
@@ -55,3 +53,24 @@ code {
 .cart{
   padding: 0%;
 }
+
+.cont{
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.it{
+  flex: none;
+  width: calc((100% - 10px) /2);
+  display: flex;
+
+  
+}
+@media screen and (max-width: 800px) {
+  .it{
+    width: 100%;
+  }
+}
+  
+

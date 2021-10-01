@@ -11,6 +11,7 @@ import { Footer } from '../Componentes/Footer';
 import { Header } from '../Componentes/Header';
 import { BussRegScreen } from '../Screen/BussRegScreen';
 import { FirstUserRegScreen } from '../Screen/FirstUserRegScreen';
+import { Home } from '../Screen/Home';
 import { HomeScreen } from '../Screen/HomeScreen';
 import { InfoScreen } from '../Screen/InfoScreen';
 import { LoginScreen } from '../Screen/LoginScreen';
@@ -25,7 +26,7 @@ export const BasicRouter = () => {
                 <Switch>
                     <Route exact path="/AlefProyect/" component={HomeScreen}/>
                     <Route exact path="/Login" component={LoginScreen}/>
-                    <Route exact path="/UsReg" component={UserRegScreen}/>
+                    <Route exact path="/UsReg" component={Home}/>
                     <Route exact path="/BuReg" component={BussRegScreen}/>
                     <Route exact path="/FirstReg" component={FirstUserRegScreen}/>
                     <Route path="/Info" component={InfoScreen}/>

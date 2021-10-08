@@ -1,10 +1,13 @@
 import React from 'react'
-import { Prueba } from '../Componentes/Prueba'
+import { PruebasScreen } from './PruebasScreen'
 
 export const BussRegScreen = () => {
     return (
-        <div>
-            <Prueba />
+        <div className="row">
+            
+            <PruebasScreen />
+       
+
         </div>
     )
 }

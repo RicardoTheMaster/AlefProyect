@@ -64,7 +64,7 @@ code {
   flex: none;
   width: calc((100% - 10px) /2);
   display: flex;
-
+  margin-right: 0px;
   
 }
 @media screen and (max-width: 800px) {
@@ -72,5 +72,7 @@ code {
     width: 100%;
   }
 }
-  
+.bordo{
+border: 2px blue solid;
+}
 

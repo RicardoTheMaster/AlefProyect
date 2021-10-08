@@ -21,6 +21,8 @@ export const DatosAdic = () => {
                             esp1:'',
                             esp2:'',
                             esp3:'',
+                            detalles:'',
+                            cv:'',
                         }}
 
                         onSubmit={(valores, {resetForm})=>{
@@ -38,7 +40,7 @@ export const DatosAdic = () => {
                                     <Sel col="-12 col-sm-4" label="Tercera" name="esp3" Opts={ESP}/>
                                 </div>
                                 <div className="row pt-4">
-                                    <Inp errors={errors.penultT_motivo} touched={touched.penultT_motivo} col="-12" label='Cuentanos aquellos detalles/aptitudes/et. Que consideres las empresas deban de saber.(500 caracteres maximo)' name='penultT_motivo' place='Puedes expresar libremente tus pensamientos, cualidades o esos pequeños detalles que te hagan sobre salir de los demas.' as="textarea"/>
+                                    <Inp errors={errors.penultT_motivo} touched={touched.penultT_motivo} col="-12" label='Cuentanos aquellos detalles/aptitudes/constancias/certificados. Que consideres las empresas deban de saber.(500 caracteres maximo)' name='penultT_motivo' place='Puedes expresar libremente tus pensamientos, cualidades o esos pequeños detalles que te hagan sobre salir de los demas.' as="textarea"/>
                                     
                                     <div className="col-12 pt-2">
                                     <label htmlFor="file" className=" form-label pt-2">Puedes subir como dato adicional un CV que ya hayas creado: </label>

@@ -4,54 +4,86 @@ import { Inp } from '../Elementos/Inp'
 import * as Yup from "yup";
 import { Sel } from '../Elementos/Sel';
 import { Radio } from '../Elementos/Radio';
-import "animate.css"
+
+
+import "animate.css";
+import { Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
+import { Mes, Grado, Avance, Doc, Npos, Xpos} from '../Elementos/Opts';
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
 
 
 export const DatosEsc = () => {
-    const Opts={
-        Escuela:'1',
-        Primaria:'2',
-        Secundaria:'3',
-        'Bachillerato / Preparatorio':'4',
-        'Profesional (Ing. / Lic. / Etc.)':'5',
-        Posgrado:'6',
 
-    }
-    const Opts2={
-        'En Curso':'1',
-        Concluido:'2',
-        Trunco:'3',
-    }
-    const Opts3={
-        'Enero-Junio':'1',
-        'Julio-Diciembre':'2',
 
-    }
-    const Opts4={
-        'Titulo y cedula':'1',
-        'Pasante':'2',
-        'Certificado':'2',
-        
+    const [open, setOpen] = React.useState(false);
+  
+  
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+    };
 
-    }
-    const Opts5={
-        '2':'2',
-        '3':'2',
-        'Mas de 3':'2',
-        
 
-    }
-    const Opts6={
-        'Maestria':'1',
-        'Doctorado':'2',
-        
+    
+    
 
-    }
+   
+    
+   
+
     const [enviado, setEnviado] = useState(false);
     const [Pos, setPos] = useState('No')
     const [nvl, setnvl] = useState('')
     const [year, setYear] = useState(0)
+    const [avnz, setavnz] = useState("")
 
+    const getValCon=(values)=>{
+
+        if(values.esc_pos==="En proceso"){
+
+            if(values.esc_doc&& values.esc_name && values.esc_pos && values.esc_Npos && values.esc_posperIA && values.esc_posperTA && values.esc_posperIM && values.esc_posperTM && values.esc_posNom && values.esc_posDM){
+                setEnviado(true)
+             }else{
+    
+                setOpen(true)
+           }
+        }else if(values.esc_pos==="Si"){
+
+            if(values.esc_doc&& values.esc_name && values.esc_pos && values.esc_Npos>1 && values.esc_posperIA && values.esc_posperTA && values.esc_posperIM && values.esc_posperTM && values.esc_posNom && values.esc_posDM){
+                setEnviado(true)
+             }else{
+    
+                setOpen(true)
+           }
+        }else{
+            if(values.esc_doc&& values.esc_name ){
+                setEnviado(true)
+             }else{
+    
+                setOpen(true)
+           }
+        }
+       
+    }
+  
+    const getValProPos=(values)=>{
+            if((values.esc_avan==='En Curso' || values.esc_avan==='Trunco') && values.esc_name){
+                setEnviado(true);
+                console.log('entra');
+            }else if(values.esc_name && values.esc_doc){
+                setEnviado(true)
+            }else{
+                setOpen(true)
+            }
+    }
     const Personales=Yup.object().shape({
                     esc_nvlaca:Yup.string("¡HACKERMAN!").required('¡Escoge!'),
                     esc_avan:Yup.string("¡HACKERMAN!").required('¡Escoge!'),
@@ -64,7 +96,6 @@ export const DatosEsc = () => {
                     esc_posperTA:Yup.number("¡Solo numeros!").min(year+2,'¡Muy corto!').max(year+10, '¡No dura tanto!'),
                     esc_posNom:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!')
                     .matches(/^[aA-zZ\s0-9.]+$/,"¡Caracteres no permitidos!"),
-
                   });
     return (
 
@@ -81,16 +112,31 @@ export const DatosEsc = () => {
                             esc_perIA:'',
                             esc_perTM:'',
                             esc_perTA:'',
-                            esc_Npos:'',
-                            esc_nvlaca:'',
-                            esc_nvlaca:'',
-                            esc_nvlaca:'',
-                            esc_nvlaca:'',
+                            esc_Npos:1,
+                            esc_posperTM:'',
+                            esc_posperIM:'',
+                            esc_posperIA:'',
+                            esc_posperTA:'',
+                            esc_posNom:'',
+                            esc_posDM:'',
+                            esc_doc:'',
+                            esc_name:'',
 
                         }}
 
                         onSubmit={(valores, {resetForm})=>{
-                            setEnviado(true);
+
+                            if(valores.esc_nvlaca==='Posgrado' && valores.esc_avan==="Concluido"){
+                                getValCon(valores);
+                                
+                            }else if(valores.esc_nvlaca==='Profesional (Ing. / Lic. / Etc.)' || valores.esc_nvlaca==='Posgrado'){
+                                getValProPos(valores);
+                            }else{
+                                setEnviado(true);
+                            }
+
+                            
+                            
                             setTimeout(()=>setEnviado(false),5000);
                         }}
 
@@ -98,8 +144,10 @@ export const DatosEsc = () => {
                         validationSchema={Personales}
 
                         validate={(e)=>{
-                            if( e.esc_nvlaca==="Posgrado"){
+
+                            if( e.esc_nvlaca==="Posgrado" && e.esc_avan ==="Concluido"){
                                 setnvl(e.esc_nvlaca)
+                                setavnz(e.esc_avan)
                                 if(e.esc_pos && e.esc_pos==='Si' ){
                                     setPos('Si')
                                 }else if(e.esc_pos && e.esc_pos==='En proceso'){
@@ -109,6 +157,7 @@ export const DatosEsc = () => {
                                 }
                             }else{
                                 setnvl(e.esc_nvlaca)
+                                setavnz(e.esc_avan)
                                 setPos('No')
                             }
                             
@@ -126,8 +175,8 @@ export const DatosEsc = () => {
                                
                                 
                                 <div className="row pt-2 ">
-                                <Sel errors={errors.esc_nvlaca} touched={touched.esc_nvlaca} col="-6" label='Nivel Academico' name='esc_nvlaca' Opts={Opts} />
-                                <Sel errors={errors.esc_avan} touched={touched.esc_avan} col="-6" label='Avance' name='esc_avan' Opts={Opts2} />
+                                <Sel errors={errors.esc_nvlaca} touched={touched.esc_nvlaca} col="-6" label='Nivel Academico' name='esc_nvlaca' Opts={Grado} />
+                                <Sel errors={errors.esc_avan} touched={touched.esc_avan} col="-6" label='Avance' name='esc_avan' Opts={Avance} />
 
                                 </div>
                                 <div className="row pt-2 ">
@@ -137,20 +186,33 @@ export const DatosEsc = () => {
                                     </div>
                                     <div className="col-6">
                                         <div className="row">
-                                            <Sel errors={errors.esc_perIM} touched={touched.esc_perIM} col="-8 sm-5" label='Mes' name='esc_perIM' Opts={Opts3} />
+                                            <Sel errors={errors.esc_perIM} touched={touched.esc_perIM} col="-8 sm-5" label='Mes' name='esc_perIM' Opts={Mes} />
                                             <Inp errors={errors.esc_perIA} touched={touched.esc_perIA} col="-4 sm-3" label="Año" name="esc_perIA" place="2010" type="number"/>
                                         </div>
                                     </div>
                                     
                                     <div className="col-6">
                                         <div className="row">
-                                            <Sel errors={errors.esc_perTM} touched={touched.esc_perTM} col="-8 sm-5" label='Mes' name='esc_perTM' Opts={Opts3} />
+                                            <Sel errors={errors.esc_perTM} touched={touched.esc_perTM} col="-8 sm-5" label='Mes' name='esc_perTM' Opts={Mes} />
                                             <Inp errors={errors.esc_perTA} touched={touched.esc_perTA} col="-4 sm-3" label="Año" name="esc_perTA" place="2021" type="number"/>
                                         </div>
                                     </div>
+                                    {
+                                    (nvl==='Posgrado' || nvl==='Profesional (Ing. / Lic. / Etc.)')&&
+                                     <div className="col-12 pt-4">
+                                        <div className="row">
+                                            { (avnz==='Concluido')&&
+                                            <Sel errors={errors.esc_doc} touched={touched.esc_doc} col="-6 sm-12  animate__animated animate__rubberBand" label='Documento aprobatorio' name='esc_doc' Opts={Doc} />
+                                            }
+                                            <Inp errors={errors.esc_name} touched={touched.esc_name} col="-6 sm-12  animate__animated animate__rubberBand" label="Nombre" name="esc_name" place="Ing. En Sistemas Computacionales" />
+                                        </div>
+                                    </div>
+                                    }
+                                    
                                 </div>
+
                                 {
-                                    nvl==='Posgrado' &&
+                                    (nvl==='Posgrado'&& avnz ==="Concluido" ) &&
                                     <div className="row pt-4 text-center animate__animated animate__backInUp ">
                                     <label className="col-4 form-label pt-2 fw-bold">¿Tienes 2 o mas posgrados?</label>
                                     <Radio col ="-1" name="esc_pos" label="Si" />
@@ -166,7 +228,7 @@ export const DatosEsc = () => {
                                         {(Pos==='Si') && (
                                             <div className="row pt-2 text-center">
                                                 
-                                                    <Sel errors={errors.esc_Npos} touched={touched.esc_Npos} col="-3" label='¿Cuantos?' name='esc_Npos' Opts={Opts5} />
+                                                    <Sel errors={errors.esc_Npos} touched={touched.esc_Npos} col="-3" label='¿Cuantos?' name='esc_Npos' Opts={Xpos} />
                                                 <div className="col-9">
                                                     <label className="form-label pt-2 col-6 align-bottom fw-bold animate__animated animate__flash animate__delay-2s " >Por favor, ingresa los datos del ultimo ó del que creas es mas importante.</label>
                                                 </div>
@@ -179,20 +241,20 @@ export const DatosEsc = () => {
                                             </div>
                                             <div className="col-6">
                                                 <div className="row">
-                                                    <Sel errors={errors.esc_posperIM} touched={touched.esc_posperIM} col="-8 sm-5" label='Mes' name='esc_posperIM' Opts={Opts3} />
+                                                    <Sel errors={errors.esc_posperIM} touched={touched.esc_posperIM} col="-8 sm-5" label='Mes' name='esc_posperIM' Opts={Mes} />
                                                     <Inp errors={errors.esc_posperIA} touched={touched.esc_posperIA} col="-4 sm-3" label="Año" name="esc_posperIA" place="2010" type="number"/>
                                                 </div>
                                             </div>
                                             
                                             <div className="col-6">
                                                 <div className="row">
-                                                    <Sel errors={errors.esc_posperTM} touched={touched.esc_posperTM} col="-8 sm-5" label='Mes' name='esc_posperTM' Opts={Opts3} />
+                                                    <Sel errors={errors.esc_posperTM} touched={touched.esc_posperTM} col="-8 sm-5" label='Mes' name='esc_posperTM' Opts={Mes} />
                                                     <Inp errors={errors.esc_posperTA} touched={touched.esc_posperTA} col="-4 sm-3" label="Año" name="esc_posperTA" place="2021" type="number"/>
                                                 </div>
                                             </div>
 
                                             <div className="row pt-2 ">
-                                                <Sel errors={errors.esc_posDM} touched={touched.esc_posDM} col="-12 col-sm-6" label='¿Cual es tu posgrado?' name='esc_posDM' Opts={Opts6} />
+                                                <Sel errors={errors.esc_posDM} touched={touched.esc_posDM} col="-12 col-sm-6" label='¿Cual es tu posgrado?' name='esc_posDM' Opts={Npos} />
                                                 <Inp errors={errors.esc_posNom} touched={touched.esc_posNom} col="-12 col-sm-6" label="Titulo" name="esc_posNom" place="En sistemas, En matematicas, etc."/>
                                             </div>
                                         </div>
@@ -228,10 +290,12 @@ export const DatosEsc = () => {
                                     
                                     )
                                 }
-                                {
-                                    console.log(errors)
-                                }
                                 
+                                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} >
+                                    <Alert onClose={handleClose} severity="error" direction="down">
+                                    ¡Verifica que hayas llenado todo!
+                                    </Alert>
+                                </Snackbar>
                             </Form>
                         ) 
                         }

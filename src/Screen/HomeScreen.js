@@ -1,11 +1,8 @@
-import { Flag } from '@material-ui/icons';
 import React, { useState } from 'react'
-import { Inp } from '../Componentes/Elementos/Inp'
 
 export const HomeScreen = () => {
 
     const [card, setCard] = useState(0);
-    let flag=true;
 
 
    
@@ -90,7 +87,7 @@ export const HomeScreen = () => {
                 <div className={col+" border pt-2"}>
                     <button className="cart card my-2 text-dark bg-light text-start" onClick={()=>{setTimeout(()=>setCard(1),1);; setCard(-1)}}>
                         
-                            <div className="card-header col-12">Banco Azteca, Durango, Dgo.</div>
+                            <div className="card-header col-12">Banco Azteca, Durango, Dgo. 1 </div>
                             <div className="card-body">
                                 <h5 className="card-title">Agente de cobranza</h5>
                         
@@ -103,7 +100,7 @@ export const HomeScreen = () => {
 
 
                     <button className="cart card my-2 text-dark bg-light text-start" onClick={()=>{setTimeout(()=>setCard(2),1);; setCard(-1)}}>
-                        <div className="col-12 card-header">Atención telefonica, Durango, Dgo.</div>
+                        <div className="col-12 card-header">Atención telefonica, Durango, Dgo. 2 </div>
                         <div className="card-body">
                             <h5 className="card-title">Afore MX.</h5>
                        

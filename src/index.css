@@ -33,10 +33,7 @@ code {
 }
 .bb{
   border: 1px  #000000 outset; 
-  height: 100vh;
-  padding: 20px;
-  box-shadow: 0px 0px 20px #3727ED;
-  border-radius: 2%;
+
 }
 
 .enviado{
@@ -76,3 +73,13 @@ code {
 border: 2px blue solid;
 }
 
+.userimg{
+  border:1px solid black;
+  width:150px;
+  height:150px;
+  border-radius: 100%;
+  box-shadow: 0px 0px 40px 1px rgb(32, 221, 32);
+}
+.trans{
+  color: rgb(0, 0, 0,.3)
+}

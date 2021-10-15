@@ -83,7 +83,7 @@ const handleReset = () => {
 };
     return (
 
-<div className="container background2">
+<div className="container background2 animate__animated animate__backInDown">
 
     <h1 className="marL mb-4 text">Registro de usuario</h1>
     <span className="lh-sm text ">

@@ -37,7 +37,7 @@ export const DatosPers = () => {
                 });
     return (
 
-        <div className="pt-2">
+        <div className="pt-2 animate__animated animate__backInUp ">
                 <hr />
             <h4 className="text">Datos personales</h4>
                 <hr />          

@@ -62,7 +62,7 @@ export const DatosRefP = () => {
                             <Form>
                                
                                 
-                                <div className="row pt-2 ">
+                                <div className="row pt-2 animate__animated animate__backInUp ">
                                 <h5 className="py-2 fs-6 ">Primera referencia:</h5> 
                                     <Inp errors={errors.refP1_nom} touched={touched.refP1_nom} col="-12 col-sm-6" label="Nombre completo" name="refP1_nom" place="Nombre Apellido Apellido"/>
                                     <Inp errors={errors.refP1_ocup} touched={touched.refP1_ocup} col="-12 col-sm-6" label="Ocupación" name="refP1_ocup" place="Estudiante/Trabajador/Agricultor/Etc."/>

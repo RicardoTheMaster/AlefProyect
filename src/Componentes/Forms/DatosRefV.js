@@ -6,7 +6,7 @@ export const DatosRefV = () => {
     const {handleInputForm}=useForm();
 
     return (
-        <div className="pt-2">
+        <div className="pt-2 animate__animated animate__backInUp ">
                 <h5 className="pt-2 fs-6 fw-bold ">2 referencias vecinales (Que vivan a MAXIMO 1km a la redonda)</h5> 
                     <div className="row pt-2">
                         <h5 className="py-2 fs-6 ">Primera referencia:</h5> 

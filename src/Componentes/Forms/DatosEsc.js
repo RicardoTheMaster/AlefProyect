@@ -46,31 +46,35 @@ export const DatosEsc = () => {
     const [avnz, setavnz] = useState("")
 
     const getValCon=(values)=>{
+        console.log(values)
+        if(values.esc_pos){
+            if(values.esc_pos==="En proceso"){
 
-        if(values.esc_pos==="En proceso"){
+                if(values.esc_doc&& values.esc_name && values.esc_pos && values.esc_Npos && values.esc_posperIA && values.esc_posperTA && values.esc_posperIM && values.esc_posperTM && values.esc_posNom && values.esc_posDM){
+                    setEnviado(true)
+                }else{
+        
+                    setOpen(true)
+            }
+            }else if(values.esc_pos==="Si"){
 
-            if(values.esc_doc&& values.esc_name && values.esc_pos && values.esc_Npos && values.esc_posperIA && values.esc_posperTA && values.esc_posperIM && values.esc_posperTM && values.esc_posNom && values.esc_posDM){
-                setEnviado(true)
-             }else{
-    
-                setOpen(true)
-           }
-        }else if(values.esc_pos==="Si"){
-
-            if(values.esc_doc&& values.esc_name && values.esc_pos && values.esc_Npos>1 && values.esc_posperIA && values.esc_posperTA && values.esc_posperIM && values.esc_posperTM && values.esc_posNom && values.esc_posDM){
-                setEnviado(true)
-             }else{
-    
-                setOpen(true)
-           }
-        }else{
-            if(values.esc_doc&& values.esc_name ){
-                setEnviado(true)
-             }else{
-    
-                setOpen(true)
-           }
-        }
+                if(values.esc_doc&& values.esc_name && values.esc_pos &&values.esc_Npos!==1  && values.esc_posperIA && values.esc_posperTA && values.esc_posperIM && values.esc_posperTM && values.esc_posNom && values.esc_posDM){
+                    setEnviado(true)
+                }else{
+        
+                    setOpen(true)
+            }
+            }else{
+                if(values.esc_doc&& values.esc_name ){
+                    setEnviado(true)
+                }else{
+        
+                    setOpen(true)
+            }
+            }
+         }else{
+            setOpen(true)
+       }
        
     }
   
@@ -96,6 +100,7 @@ export const DatosEsc = () => {
                     esc_posperTA:Yup.number("¡Solo numeros!").min(year+2,'¡Muy corto!').max(year+10, '¡No dura tanto!'),
                     esc_posNom:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!')
                     .matches(/^[aA-zZ\s0-9.]+$/,"¡Caracteres no permitidos!"),
+                    esc_Npos:Yup.string().required("Escoge")
                   });
     return (
 

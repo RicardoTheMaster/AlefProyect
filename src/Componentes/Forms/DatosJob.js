@@ -95,7 +95,7 @@ export const DatosJob = () => {
                         ({errors, touched})=>( 
 
                             <Form>
-        <div className="pt-4">
+        <div className="pt-4 animate__animated animate__backInUp ">
                 <hr /><h4 className="text">Ultimos 3 empleos</h4><hr />
             <h5 className="pt-4 fs-6 ">Ultimo trabajo o actual</h5> 
                 <div className="row pt-2">

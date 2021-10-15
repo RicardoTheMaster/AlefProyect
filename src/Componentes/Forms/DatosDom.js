@@ -48,7 +48,7 @@ export const DatosDom = () => {
                  'Viudo@':'0',
              }
     return (
-    <div className="pt-2">
+    <div className="pt-2 animate__animated animate__backInUp ">
         <hr/><h4 className="text">Domicilio</h4><hr/> 
         <div className="row pt-2">
             <DivLaIn col="-9 col-sm-5" label="Calle" name="domicilio_calle" handleInput={handleInputForm} place="Andador, avenida, etc."/>

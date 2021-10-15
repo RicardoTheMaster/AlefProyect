@@ -5,10 +5,14 @@ import { DatosAdic } from '../Componentes/Forms/DatosAdic'
 import { DatosMedic } from '../Componentes/Forms/DatosMedic'
 import { DatosPers } from '../Componentes/Forms/DatosPers'
 import { Refer } from '../Componentes/Forms/Refer'
+import { useRouteMatch } from 'react-router-dom/cjs/react-router-dom.min'
 
 export const InfoScreen = () => {
+
+    let {path,url}=useRouteMatch();
+    console.log(path, ' ... ',url)
     return (
-        <div>
+        <div className='animate__animated animate__backInDown'>
            
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
@@ -19,11 +23,11 @@ export const InfoScreen = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    <li><NavLink exact to="/Info/Personales" activeClassName="active" className="nav-item nav-link px-4">Personales</NavLink></li>
-                    <li><NavLink exact to="/Info/Laborales" activeClassName="active" className="nav-item nav-link px-4">Laborales</NavLink></li>
-                    <li><NavLink exact to="/Info/Escolares" activeClassName="active" className="nav-item nav-link px-4">Escolares</NavLink></li>
-                    <li><NavLink exact to="/Info/Medicos" activeClassName="active" className="nav-item nav-link px-4">Medicos</NavLink></li>
-                    <li><NavLink exact to="/Info/Extras" activeClassName="active" className="nav-item nav-link px-4">Extras</NavLink></li>
+                    <li><NavLink exact to={url+"/Personales"} activeClassName="active" className="nav-item nav-link px-4">Personales</NavLink></li>
+                    <li><NavLink exact to={url+"/Laborales"} activeClassName="active" className="nav-item nav-link px-4">Laborales</NavLink></li>
+                    <li><NavLink exact to={url+"/Escolares"} activeClassName="active" className="nav-item nav-link px-4">Escolares</NavLink></li>
+                    <li><NavLink exact to={url+"/Medicos"} activeClassName="active" className="nav-item nav-link px-4">Medicos</NavLink></li>
+                    <li><NavLink exact to={url+"/Extras"} activeClassName="active" className="nav-item nav-link px-4">Extras</NavLink></li>
 
                     </ul>
                    
@@ -32,11 +36,11 @@ export const InfoScreen = () => {
             </nav>
             <div className="pb-5">
             <Switch>
-                    <Route exact path="/Info/Personales" component={DatosPers}/>
-                    <Route exact path="/Info/Escolares" component={DatosEsc}/>
-                    <Route exact path="/Info/Laborales" component={Refer}/>
-                    <Route exact path="/Info/Medicos" component={DatosMedic}/>
-                    <Route exact path="/Info/Extras" component={DatosAdic}/>
+                    <Route exact path={path+"/Personales"} component={DatosPers}/>
+                    <Route exact path={path+"/Escolares"} component={DatosEsc}/>
+                    <Route exact path={path+"/Laborales"} component={Refer}/>
+                    <Route exact path={path+"/Medicos"} component={DatosMedic}/>
+                    <Route exact path={path+"/Extras"} component={DatosAdic}/>
             </Switch>
             </div>
         </div>

@@ -27,7 +27,7 @@ export const Refer = () => {
                         ()=>( 
                             <>
                             <Form>
-                                <div className="pt-4">
+                                <div className="pt-4 animate__animated animate__backInDown ">
                                         <hr /><h4 className="text">Selecciona tu area de interes/experiencia</h4><hr />
                                         <div className="row pt-4 text-center">
                                             <label className="col-4 form-label pt-2 fw-bold">¿Has tenido por lo menos 3 empleos?</label>

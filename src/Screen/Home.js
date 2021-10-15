@@ -10,7 +10,7 @@ const [desc, setDesc] = useState(0)
 const getDesc=(desc)=>{
     switch(desc){
         
-        case 1: return <div className="bordo cart card my-2 text-dark bg-light text-start animate__animated animate__rollIn" >
+        case 1: return <div className="ShaRightTop cart card my-2 text-dark bg-light text-start animate__animated animate__rollIn" >
                             <div className=" card-header col-12">Banco Azteca, Durango, Dgo.1 </div>
                             <div className=" card-body">
                                 <h5 className=" card-title">Tiempo completo</h5>
@@ -24,7 +24,7 @@ const getDesc=(desc)=>{
                             </div>
                         </div>
         
-        case 2: return <div className="bordo cart card my-2 text-dark bg-light text-start animate__animated animate__rollIn" >
+        case 2: return <div className="ShaRightTop cart card my-2 text-dark bg-light text-start animate__animated animate__rollIn" >
                             <div className=" card-header col-12">Banco Azteca, Durango, Dgo. 2</div>
                             <div className=" card-body">
                                 <h5 className=" card-title">Agente de cobranza</h5>
@@ -36,7 +36,7 @@ const getDesc=(desc)=>{
                             </div>
                         </div>
                 
-        case 3: return <div className="bordo cart card my-2 text-dark bg-light text-start animate__animated animate__rollIn"  >
+        case 3: return <div className="ShaRightTop cart card my-2 text-dark bg-light text-start animate__animated animate__rollIn"  >
                         
                             <div className=" card-header col-12">Banco Azteca, Durango, Dgo. 3</div>
                             <div className=" card-body">
@@ -50,7 +50,7 @@ const getDesc=(desc)=>{
                                                         </div>
                     
                          </div>
-        case 4: return <div className="bordo cart card my-2 text-dark bg-light text-start animate__animated animate__rollIn"  >
+        case 4: return <div className="ShaRightTop cart card my-2 text-dark bg-light text-start animate__animated animate__rollIn"  >
                             <div className=" card-header col-12">Banco Azteca, Durango, Dgo. 4</div>
                             <div className=" card-body">
                                 <h5 className=" card-title">Agente de cobranza</h5>
@@ -70,11 +70,11 @@ const getDesc=(desc)=>{
 
                
 
-             <div className=" ">
+             <div className="animate__animated animate__backInDown">
             
-            <div className=" cont borde">
+            <div className=" cont ">
                 <li className="it">
-                <button className=" cart card my-2 text-dark bg-light text-start animate__animated animate__shakeX" onClick={()=>{setDesc(1)}} >
+                <button className=" ShaLeftBot cart card my-2 text-dark bg-light text-start animate__animated animate__shakeX" onClick={()=>{setDesc(1)}} >
                         
                         <div className=" card-header col-12">Banco Azteca, Durango, Dgo. 1 </div>
                         <div className=" card-body">
@@ -93,7 +93,7 @@ const getDesc=(desc)=>{
         </li>
                 
                 <li className="it">
-                <button className=" cart card my-2 text-dark bg-light text-start animate__animated animate__shakeX" onClick={()=>{setDesc(2)}}>
+                <button className=" ShaLeftBot cart card my-2 text-dark bg-light text-start animate__animated animate__shakeX" onClick={()=>{setDesc(2)}}>
                         
                         <div className=" card-header col-12">Banco Azteca, Durango, Dgo. 2 </div>
                         <div className=" card-body">
@@ -112,7 +112,7 @@ const getDesc=(desc)=>{
         </li>
                 <li className="it">
 
-                <button className="  cart card my-2 text-dark bg-light text-start animate__animated animate__shakeX" onClick={()=>{setDesc(3)}}>
+                <button className="ShaLeftBot  cart card my-2 text-dark bg-light text-start animate__animated animate__shakeX" onClick={()=>{setDesc(3)}}>
                         
                         <div className=" card-header col-12">Banco Azteca, Durango, Dgo. 3</div>
                         <div className=" card-body">
@@ -130,7 +130,7 @@ const getDesc=(desc)=>{
         </li>
                     <li className="it">
 
-            <button className="  cart card my-2 text-dark bg-light text-start animate__animated animate__shakeX" onClick={()=>{setDesc(4)}}>
+            <button className="ShaLeftBot  cart card my-2 text-dark bg-light text-start animate__animated animate__shakeX" onClick={()=>{setDesc(4)}}>
                     
                     <div className=" card-header col-12">Banco Azteca, Durango, Dgo. 3</div>
                     <div className=" card-body">

@@ -9,7 +9,7 @@ export const DatosAdic = () => {
 
 
     return (
-    <div className="pt-4">
+    <div className="pt-4 animate__animated animate__backInUp ">
             <hr /><h4 className="text">Ultimos datos adicionales: Pero IMPORTANTES</h4><hr />
              
                     <p className="form-label">Selecciona almenos la primera especialidad/rama/ambito/campo que mas destaque en tu experiencia ó

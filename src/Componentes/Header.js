@@ -14,15 +14,15 @@ export const Header = () => {
 
         <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><NavLink exact to="/AlefProyect/"      activeClassName="link-dark" className="nav-item nav-link px-2 ">Home</NavLink></li>
-                <li><NavLink exact to="/BuReg" activeClassName="link-dark" className="nav-item nav-link px-2">Empresas</NavLink></li>
-                <li><NavLink exact to="/UsReg" activeClassName="link-dark" className="nav-item nav-link px-2">Registro</NavLink></li>
-                <li><NavLink exact to="/Info" activeClassName="link-dark" className="nav-item nav-link px-2">Info</NavLink></li>
+                <li><NavLink exact to="/AlefProyect/Login" activeClassName="link-dark" className="nav-item nav-link px-2">Perfil</NavLink></li>
+                <li><NavLink exact to="/AlefProyect/Graficas" activeClassName="link-dark" className="nav-item nav-link px-2">Gafricas</NavLink></li>
+                <li><NavLink exact to="/AlefProyect/FirstReg" activeClassName="link-dark" className="nav-item nav-link px-2">Registro (datos)</NavLink></li>
 
             </ul>
             
      
             <div className="col-md-3 text-end">
-            <NavLink exact to="/Login"><button type="button" className="btn btn-outline-primary me-2">Iniciar Sesion</button>
+            <NavLink exact to="/AlefProyect/Login"><button type="button" className="btn btn-outline-primary me-2">Iniciar Sesion</button>
             </NavLink>
             </div>
         </header>

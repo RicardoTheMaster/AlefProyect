@@ -2,26 +2,38 @@ import React from 'react'
 import img from '../Assets/Images/user.jfif'
 import PersonPinCircleIcon from '@mui/icons-material/PersonPinCircle';
 import EditIcon from '@mui/icons-material/Edit';
+import {  Doughnut   } from 'react-chartjs-2'
 
 
 export const UserScreen = () => {
+
+    const data={
+        labels:['',' % Llenado'],
+        datasets:[{
+            data:[30,70],
+            backgroundColor:['white','green']
+        }]
+    }
+    const opciones={
+        responsive:true
+    }
     return (
-        <>
-        <div className='row pb-4'>
+        <div className='animate__animated animate__backInDown'> 
+        <div className='row pb-4 justify-content-center '>
             <div className='col-3 col-sm-2  pt-4 pb-2 '>
-            <img src={img} className="userimg  "  alt='insta'/>
+            <img src={img} className="userimg"  alt='insta'/>
             </div>
 
             <div className='col-8 col-sm-6  pr-2 text-center'>
                 <h3 className='pt-4 pb-2'>Nombre Apellido Apellido </h3>
+                
                 <PersonPinCircleIcon />Ciudad, Edo.
                 
             </div>
-            <div className='col-12 col-sm-4 pt-4 bb ms-2'>
-                <p>Edad</p>
-                <p>Correo electronico</p>
-                <p>Numero celular</p>
-                <p>Edad</p>
+            <div className='col-6 col-sm-2 '>
+                <div className=' '>
+                    <Doughnut data={data} opciones={opciones}/>
+                </div>
             </div>
         </div>
         <div className='row'>
@@ -191,6 +203,6 @@ export const UserScreen = () => {
 
         </div>
 
-        </>
+        </div>
     )
 }

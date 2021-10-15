@@ -1,5 +1,5 @@
 import React from 'react'
-import { Bar, Doughnut, Line, PolarArea, Radar } from 'react-chartjs-2'
+import { Bar, Doughnut, Line, PolarArea } from 'react-chartjs-2'
 import { Pie } from 'react-chartjs-2'
 
 export const PruebasScreen = () => {
@@ -48,22 +48,22 @@ export const PruebasScreen = () => {
         }
       
     return (
-        <>
-        <div className="col-6">
-            <Pie data={data} opciones={opciones}/>
+        <div className='row animate__animated animate__backInDown'>
+            <div className="col-6">
+                <Pie data={data} opciones={opciones}/>
+            </div>
+            <div className="col-6">
+                <Doughnut data={data2} opciones={options}/>
+            </div>
+            <div className="col-6 pt-5">
+                <PolarArea data={data2} opciones={options}/>
+            </div>
+            <div className="col-6 pt-5">
+                <Bar data={data2} opciones={option}/>
+            </div>
+            <div className="col-6 pt-5">
+                <Line data={data2} opciones={options}/>
+            </div>
         </div>
-        <div className="col-6">
-            <Doughnut data={data2} opciones={options}/>
-        </div>
-        <div className="col-6 pt-5">
-            <PolarArea data={data2} opciones={options}/>
-        </div>
-        <div className="col-6 pt-5">
-            <Bar data={data2} opciones={option}/>
-        </div>
-        <div className="col-6 pt-5">
-            <Line data={data2} opciones={options}/>
-        </div>
-        </>
     )
 }

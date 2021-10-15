@@ -31,7 +31,7 @@ export const DatosMedic = () => {
                 });
     return (
 
-        <div className="pt-2">
+        <div className="pt-2 animate__animated animate__backInUp ">
         
               <Formik
                         initialValues={{

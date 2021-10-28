@@ -90,3 +90,11 @@ border: 2px blue solid;
 .ShaRightTop{
   box-shadow: 3px 3px 3px 2px rgba(0, 72, 255, 0.4);
 }
+.animate__animated2 {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-duration: var(--animate-duration);
+  animation-duration: var(--animate-duration);
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: unset;
+}

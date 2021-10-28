@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import {  Form, Formik } from 'formik'
 import { Inp } from '../Elementos/Inp'
 import { InSpan } from '../Elementos/InSpan'
+import { CalifJobModal } from './CalifJobModal';
 
 
 
@@ -48,6 +49,7 @@ export const DatosJob = () => {
 
                 });
     return (
+        <>
         <Formik
                         initialValues={{
                             ultT_puesto:'',
@@ -74,6 +76,8 @@ export const DatosJob = () => {
                             console.log(valores)
                             setEnviado(true);
                             setTimeout(()=>setEnviado(false),5000);
+                            let Modal=document.getElementById('but')
+                            Modal.click();
                         }}
 
                         
@@ -169,10 +173,15 @@ export const DatosJob = () => {
                                     </div>
                                     ))
                                 }
+
+                                
             </Form>
                         ) 
                         }
+                        
         </Formik> 
-        
+        <button type="button" id="but" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"/>
+        <CalifJobModal />
+        </>
     )
 }

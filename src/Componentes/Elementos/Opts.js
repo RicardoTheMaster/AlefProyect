@@ -96,3 +96,24 @@ export const blood={
     'No sé ':'9'
     
 }
+export const diez={
+    '1':'1',
+    '2':'2',
+    '3':'3',
+    '4':'4',
+    '5':'5',
+    '6':'6',
+    '7':'7',
+    '8':'8',
+    '9':'9',
+    '10':'10'
+    
+}
+export const motivo={
+    'Prestaciones':'1',
+    'Salario':'2',
+    'Clima laboral':'3',
+    'Horario':'4',
+    'Motivos personales/Otro':'5'
+    
+}

@@ -30,6 +30,7 @@ export const BasicRouter = () => {
                 </Switch>
             </div>
             <Footer />
+            
         </Router>
     )
 }

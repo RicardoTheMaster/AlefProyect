@@ -1,19 +1,22 @@
 import { Form, Formik } from 'formik'
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import { edad, formatoFecha } from '../../Hooks/useForm'
 import { DivLaBtn } from '../Elementos/DivLaBtn'
 import { Inp } from '../Elementos/Inp'
 import { SEX, NAC } from '../Elementos/Opts'
 import { Sel } from '../Elementos/Sel'
 import * as Yup from "yup";
-export const DatosPers = () => {
+import { CalifJobModal } from './CalifJobModal'
+
+export const DatosPers  = () => {
     
     const [enviado, setEnviado] = useState(false);
 
+    
 
     const Personales=Yup.object().shape({
-                    datosPers_apP:Yup.string("¡Solo letras!").
-                        min(2,'¡Muy corto!')
+                    datosPers_apP:Yup.string("¡Solo letras!")
+                        .min(2,'¡Muy corto!')
                         .max(20, '¡Muy largo!')
                         .required('¡Introduce un nombre!')
                         .matches(/^[aA-zZ\s.]+$/,"¡Solo letras!"),
@@ -35,7 +38,29 @@ export const DatosPers = () => {
                                        .matches(/^[aA-zZ0-9]+$/,"¡Verifica!"),
 
                 });
-    return (
+
+    const [consult, setconsult] = useState({apellidoP:''})
+   
+    const consulta= async ()=>{
+        fetch(`http://127.0.0.1/alefwithphp/php/getInformationDP.php`)
+        .then(res=> res.json())
+        .then(json=>setconsult(json))
+        
+
+    }
+    const [flag, setFlag] = useState(true)
+   console.log(consult, '*-- ')
+
+    if((flag)){
+        consulta()
+        console.log(consult.apellidoP,' -*- ',Object.values(consult))
+        setFlag(false)
+
+    }
+
+    return(
+        <>
+          <CalifJobModal />       
 
         <div className="pt-2 animate__animated animate__backInUp ">
                 <hr />
@@ -43,7 +68,7 @@ export const DatosPers = () => {
                 <hr />          
               <Formik
                         initialValues={{
-                            datosPers_apP:'',
+                            datosPers_apP:consult.apellidoP,
                             datosPers_apM:'',
                             datosPers_nom:'',
                             datosPers_fechaNac:'',
@@ -58,7 +83,8 @@ export const DatosPers = () => {
                         }}
 
                         onSubmit={(valores, {resetForm})=>{
-                            console.log(valores)
+                            consulta()
+                            console.log(consult)
                             setEnviado(true);
                             setTimeout(()=>setEnviado(false),5000);
                         }}
@@ -74,7 +100,7 @@ export const DatosPers = () => {
                         >
                         {
                         ({errors, touched})=>(
-                            <Form>
+                            <Form className='z'>
                                
                                 <div className="row pt-4">
                                      <Inp errors={errors.datosPers_apP} touched={touched.datosPers_apP} col="-12 col-sm-4" label='Apellido paterno' name='datosPers_apP'  place='Rodriguez' />
@@ -99,27 +125,27 @@ export const DatosPers = () => {
                                     <Inp errors={errors.datosPers_rfc} touched={touched.datosPers_rfc} col="-7" label='RFC' name='datosPers_rfc'  />
                                     <DivLaBtn col="-5 " label="¡CONSULTALA!" place="CONSULTAR" />         
                                 </div>
-                                <div className="row pb-4 ">
+                                <div className="row pb-4 z">
                                     <Inp errors={errors.datosPers_nss} touched={touched.datosPers_nss} col="-7" label='NSS' name='datosPers_nss'  />
-                                    <DivLaBtn col="-5 " label="¡CONSULTALA!" place="CONSULTAR" />         
+                                    <DivLaBtn col="-5 z " label="¡CONSULTALA!" place="CONSULTAR" />         
                                 </div>
 
 
 
                                 <div className="row justify-content-center pt-5">
                                     <div className="col-4 text-center">
-                                        <button type="" className="btn btn-secondary btn-lg"> Editar </button>
+                                        <button type="button" className="btn btn-secondary btn-lg"> Editar </button>
                                     </div>
                                     <div className="col-4 text-center">
-                                        <button type="submit" className="btn btn-primary btn-lg"> GUARDAR </button>
+                                        <button type="submit" className="btn btn-primary btn-lg " > GUARDAR </button>
                                     </div>
                                 </div>
                                 <div className="row pt-1">
                                     <div className="col-6 text-start">
-                                        <button type="" className="btn btn-outline-info" > Anterior </button>
+                                        <button type="button" className="btn btn-outline-info" > Anterior </button>
                                     </div>
                                     <div className="col-6 text-end">
-                                        <button type="" className="btn btn-outline-info"> Siguiente </button>
+                                        <button type="button" className="btn btn-outline-info"> Siguiente </button>
                                     </div>
                                 </div>
                               
@@ -130,12 +156,16 @@ export const DatosPers = () => {
                                     </div>
                                     ))
                                 }
-                                
                             </Form>
                         ) 
                         }
                     </Formik> 
-                        
+
+                   
+
+
         </div>
+       
+        </>
     )
 }

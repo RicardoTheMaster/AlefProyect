@@ -10,9 +10,8 @@ import { useRouteMatch } from 'react-router-dom/cjs/react-router-dom.min'
 export const InfoScreen = () => {
 
     let {path,url}=useRouteMatch();
-    console.log(path, ' ... ',url)
     return (
-        <div className='animate__animated animate__backInDown'>
+        <div className='animate__animated2 animate__backInDown'>
            
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">

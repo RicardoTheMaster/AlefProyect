@@ -4,7 +4,7 @@ import "animate.css"
 export const Inp = ({col,name,label,place,type="text",value,errors, touched, disabled=false,change,as, ...rest}) => {
     return (
         <div className={'col'+col}>
-        <label htmlFor={name} className="form-label pt-2">{label}: </label>
+        <label htmlFor={name} className="z form-label pt-2">{label}: </label>
             <Field 
              as={as}
              type={type}

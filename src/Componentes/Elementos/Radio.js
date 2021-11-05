@@ -1,13 +1,13 @@
 import { Field } from 'formik'
 import React from 'react'
 import "animate.css"
-export const Radio = ({col,name,label,errors, touched, ...rest}) => {
+export const Radio = ({col,name,label,errors, touched, type="radio", ...rest}) => {
     return (
         <div className={'col'+col}>
         <label htmlFor={name} className="form-label pt-2"> 
         {label}&nbsp;&nbsp;
             <Field 
-             type="radio"
+             type={type}
              id={name}
              name={name}
              className="ml-4"

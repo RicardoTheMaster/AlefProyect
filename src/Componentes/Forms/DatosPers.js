@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik'
-import React, {  useState } from 'react'
+import React, {  useState, useEffect } from 'react'
 import { edad, formatoFecha } from '../../Hooks/useForm'
 import { DivLaBtn } from '../Elementos/DivLaBtn'
 import { Inp } from '../Elementos/Inp'
@@ -15,85 +15,140 @@ export const DatosPers  = () => {
     
 
     const Personales=Yup.object().shape({
-                    datosPers_apP:Yup.string("¡Solo letras!")
+                    apellidoP:Yup.string("¡Solo letras!")
                         .min(2,'¡Muy corto!')
                         .max(20, '¡Muy largo!')
                         .required('¡Introduce un nombre!')
                         .matches(/^[aA-zZ\s.]+$/,"¡Solo letras!"),
-                    datosPers_apM:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Apellido paterno!')
+                    apellidoM:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Apellido paterno!')
                                       .matches(/^[aA-zZ\s.]+$/,"¡Solo letras!"),
-                    datosPers_nom:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Apellido materno!')
+                    nombre:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Apellido materno!')
                                       .matches(/^[aA-zZ\s.]+$/,"¡Solo letras!"),
-                    datosPers_fechaNac:Yup.date("¡Formato de fecha!").min("1950/01/01",'¡Muy corto!').max(new Date(), '¡¿Aún no naces?!').required('¡Ingresa una fecha!'),
-                    datosPers_edad:Yup.number("¡Epa un error!").min(18,'¡Muy joven!').max(80, '¡Contacte un ADM!').required('¡Ingresa una fecha!'),
-                    datosPers_sex:Yup.string().required("¡Escoge uno!"),
-                    datosPers_tel:Yup.number("¡Solo letras!").min(1000000000,'¡10 o 12 digitos!').max(999999999999, '¡Muy largo!').required('¡Telefono de casa!'),
-                    datosPers_cel:Yup.number("¡Solo letras!").min(1000000000,'¡10 o 12 digitos!').max(999999999999, '¡Muy largo!').required('¡Numero celular!'),
-                    datosPers_nac:Yup.string("¡Solo letras!").required("¡Escoge uno!"),
-                    datosPers_curp:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Introduce tu CURP!')
+                    fechanac:Yup.date("¡Formato de fecha!").min("1950/01/01",'¡Muy corto!').max(new Date(), '¡¿Aún no naces?!').required('¡Ingresa una fecha!'),
+                    edad:Yup.number("¡Epa un error!").min(18,'¡Muy joven!').max(80, '¡Contacte un ADM!').required('¡Ingresa una fecha!'),
+                    sex:Yup.string().required("¡Escoge uno!"),
+                    tel:Yup.number("¡Solo letras!").min(1000000000,'¡10 o 12 digitos!').max(999999999999, '¡Muy largo!').required('¡Telefono de casa!'),
+                    cel:Yup.number("¡Solo letras!").min(1000000000,'¡10 o 12 digitos!').max(999999999999, '¡Muy largo!').required('¡Numero celular!'),
+                    nacionalidad:Yup.string("¡Solo letras!").required("¡Escoge uno!"),
+                    curp:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Introduce tu CURP!')
                                        .matches(/^[aA-zZ0-9]+$/,"¡Verifica!"),
-                    datosPers_rfc:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Introduce tu RFC!')
+                    rfc:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Introduce tu RFC!')
                                        .matches(/^[aA-zZ0-9]+$/,"¡Verifica!"), 
-                    datosPers_nss:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Introduce tu RFC!')
+                    nss:Yup.string("¡Solo letras!").min(2,'¡Muy corto!').max(20, '¡Muy largo!').required('¡Introduce tu RFC!')
                                        .matches(/^[aA-zZ0-9]+$/,"¡Verifica!"),
 
                 });
-
-    const [consult, setconsult] = useState({apellidoP:''})
-   
+              
+    const [consult, setconsult] = useState()
+    const [flag, setflag] = useState(false)
     const consulta= async ()=>{
-        fetch(`http://127.0.0.1/alefwithphp/php/getInformationDP.php`)
-        .then(res=> res.json())
-        .then(json=>setconsult(json))
-        
-
-    }
-    const [flag, setFlag] = useState(true)
-   console.log(consult, '*-- ')
-
-    if((flag)){
+          try{
+            const res=await fetch(`http://127.0.0.1/alefwithphp/php/getInformationDP.php?id=${4}`)
+            const post=await res.json();
+            console.log(post)
+            setconsult({
+                apellidoP:post.apellidoP,
+                apellidoM:post.apellidoM,
+                nombre:post.nombre,
+                fechanac:post.fechanac,
+                sex:post.sex,
+                edad:post.edad,
+                tel:post.tel,
+                cel:post.cel,
+                nacionalidad:post.nacionalidad,
+                curp:post.curp,
+                rfc:post.rfc,
+                nss:post.nss,
+                ID:post.ID
+            })
+            setflag(true)
+          }catch(e){
+              console.log("Sin datos",e)
+            setconsult({
+                apellidoP:'',
+                apellidoM:'',
+                nombre:'',
+                fechaNac:'',
+                sex:'',
+                edad:'',
+                tel:'',
+                cel:'',
+                nacionalidad:'',
+                curp:'',
+                rfc:'',
+                nss:'',
+                ID:4
+            })
+            setflag(false)
+                  }
+        }
+    
+        useEffect(() => {
         consulta()
-        console.log(consult.apellidoP,' -*- ',Object.values(consult))
-        setFlag(false)
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [])
+    const insertinfo=async(datos)=>{
+        const enviar =await fetch('http://127.0.0.1/alefwithphp/php/insDP.php',{
+            method:"POST",
+            body:datos
+        })
+        const respuesta=await enviar.json();
 
+        if(respuesta){
+            setEnviado(true);
+        }else{
+            console.log("error")
+        }
     }
-
+    const updateinfo=async(datos)=>{
+                console.log(datos)
+                
+            
+             const enviar =await fetch('http://127.0.0.1/alefwithphp/php/upDP.php',{
+                method:"PUT",
+                body:datos
+            })
+            const respuesta=await enviar.json();
+    
+            if(respuesta){
+                setEnviado(true);
+            }else{
+                console.log("error")
+            }
+            
+}
+ //   const {apellidoP, apellidoM, nombre,fechanac,sex,edad,tel,cel,nacionalidad,curp,rfc,nss}=consult[0]
     return(
+        
         <>
+        {consult &&
+        <>
+        
           <CalifJobModal />       
-
         <div className="pt-2 animate__animated animate__backInUp ">
                 <hr />
             <h4 className="text">Datos personales</h4>
                 <hr />          
               <Formik
-                        initialValues={{
-                            datosPers_apP:consult.apellidoP,
-                            datosPers_apM:'',
-                            datosPers_nom:'',
-                            datosPers_fechaNac:'',
-                            datosPers_sex:'',
-                            datosPers_edad:'',
-                            datosPers_tel:'',
-                            datosPers_cel:'',
-                            datosPers_nac:'',
-                            datosPers_curp:'',
-                            datosPers_rfc:'',
-                            datosPers_nss:'',
-                        }}
+                        initialValues={consult}
 
                         onSubmit={(valores, {resetForm})=>{
-                            consulta()
-                            console.log(consult)
-                            setEnviado(true);
-                            setTimeout(()=>setEnviado(false),5000);
+                            console.log(flag)
+                            if(flag){
+                                updateinfo(JSON.stringify(valores))
+                            }else{
+                                insertinfo(JSON.stringify(valores))
+                            }
+                            
+                            
                         }}
 
                         
                         validationSchema={Personales}
                         validate={(e)=>{
-                            if(e.datosPers_fechaNac){
-                                e.datosPers_edad=edad((formatoFecha(new Date(), "yyyy-mm-dd")),(e.datosPers_fechaNac));
+                            if(e.fechanac){
+                                e.edad=edad((formatoFecha(new Date(), "yyyy-mm-dd")),(e.fechanac));
                             }
                         }}
                         
@@ -103,30 +158,30 @@ export const DatosPers  = () => {
                             <Form className='z'>
                                
                                 <div className="row pt-4">
-                                     <Inp errors={errors.datosPers_apP} touched={touched.datosPers_apP} col="-12 col-sm-4" label='Apellido paterno' name='datosPers_apP'  place='Rodriguez' />
-                                     <Inp errors={errors.datosPers_apM} touched={touched.datosPers_apM} col="-12 col-sm-4" label='Apellido materno' name='datosPers_apM'  place='Velazquez' />
-                                     <Inp errors={errors.datosPers_nom} touched={touched.datosPers_nom} col="-12 col-sm-4" label='Nombres(s)' name='datosPers_nom'  place='Ricardo' />
+                                     <Inp errors={errors.apellidoP} touched={touched.apellidoP} col="-12 col-sm-4" label='Apellido paterno' name='apellidoP'  place='Rodriguez' />
+                                     <Inp errors={errors.apellidoM} touched={touched.apellidoM} col="-12 col-sm-4" label='Apellido materno' name='apellidoM'  place='Velazquez' />
+                                     <Inp errors={errors.nombre} touched={touched.nombre} col="-12 col-sm-4" label='Nombres(s)' name='nombre'  place='Ricardo' />
                                 </div>
                                 <div className="row ">
-                                     <Inp errors={errors.datosPers_fechaNac} touched={touched.datosPers_fechaNac} col="-8 col-sm-5" label='Fecha de nacimiento' name='datosPers_fechaNac' type="date" />
-                                     <Inp errors={errors.datosPers_edad} touched={touched.datosPers_fechaNac}col="-3 col-sm-2" label='Edad' name='datosPers_edad' type="number" disabled />
-                                     <Sel errors={errors.datosPers_sex} touched={touched.datosPers_sex} col="-5 col-sm-5" label='Sexo' name='datosPers_sex' Opts={SEX} />
+                                     <Inp errors={errors.fechanac} touched={touched.fechanac} col="-8 col-sm-5" label='Fecha de nacimiento' name='fechanac' type="date" />
+                                     <Inp errors={errors.edad} touched={touched.fechanac}col="-3 col-sm-2" label='Edad' name='edad' type="number" disabled />
+                                     <Sel errors={errors.sex} touched={touched.sex} col="-5 col-sm-5" label='Sexo' name='sex' Opts={SEX} />
                                  </div>
                                 <div className="row ">
-                                    <Inp errors={errors.datosPers_tel} touched={touched.datosPers_tel} col="-8 col-sm-4" label='Telefono (casa)' name='datosPers_tel' type="number" />
-                                    <Inp errors={errors.datosPers_cel} touched={touched.datosPers_cel} col="-8 col-sm-4" label='Telefono (celular)' name='datosPers_cel' type="number" />
-                                    <Sel errors={errors.datosPers_nac} touched={touched.datosPers_nac}col="-8 col-sm-4" label='Nacionalidad' name='datosPers_nac' Opts={NAC}  />
+                                    <Inp errors={errors.tel} touched={touched.tel} col="-8 col-sm-4" label='Telefono (casa)' name='tel' place='10-12 Digitos' type="number" />
+                                    <Inp errors={errors.cel} touched={touched.cel} col="-8 col-sm-4" label='Telefono (celular)' name='cel' place='10-12 Digitos' type="number" />
+                                    <Sel errors={errors.nacionalidad} touched={touched.nacionalidad}col="-8 col-sm-4" label='Nacionalidad' name='nacionalidad' Opts={NAC}  />
                                 </div>
                                 <div className="row">
-                                    <Inp errors={errors.datosPers_curp} touched={touched.datosPers_curp} col="-7" label='CURP' name='datosPers_curp'  />
+                                    <Inp errors={errors.curp} touched={touched.curp} col="-7" label='CURP' name='curp' place='Si tienes duda: CONSULTALA!' />
                                     <DivLaBtn col="-5 " label="¡CONSULTALA!" place="CONSULTAR" />         
                                 </div>
                                 <div className="row pb-4 ">
-                                    <Inp errors={errors.datosPers_rfc} touched={touched.datosPers_rfc} col="-7" label='RFC' name='datosPers_rfc'  />
+                                    <Inp errors={errors.rfc} touched={touched.rfc} col="-7" label='RFC' name='rfc'  place='Si tienes duda: CONSULTALA!'/>
                                     <DivLaBtn col="-5 " label="¡CONSULTALA!" place="CONSULTAR" />         
                                 </div>
                                 <div className="row pb-4 z">
-                                    <Inp errors={errors.datosPers_nss} touched={touched.datosPers_nss} col="-7" label='NSS' name='datosPers_nss'  />
+                                    <Inp errors={errors.nss} touched={touched.nss} col="-7" label='NSS' name='nss'  place='Si tienes duda: CONSULTALA!' />
                                     <DivLaBtn col="-5 z " label="¡CONSULTALA!" place="CONSULTAR" />         
                                 </div>
 
@@ -165,7 +220,9 @@ export const DatosPers  = () => {
 
 
         </div>
-       
+        </>
+       }
         </>
     )
 }
+

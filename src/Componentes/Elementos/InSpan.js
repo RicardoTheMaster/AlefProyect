@@ -8,6 +8,7 @@ export const InSpan = ({col,name,label,place,type="text",span,errors, touched, d
             <div className="row">
                 <div className="input-group mb-3">
                     <Field 
+                    
                     type={type}
                     id={name}
                     name={name}

@@ -17,6 +17,7 @@ export const Header = () => {
                 <li><NavLink exact to="/AlefProyect/Login" activeClassName="link-dark" className="nav-item nav-link px-2">Perfil</NavLink></li>
                 <li><NavLink exact to="/AlefProyect/Graficas" activeClassName="link-dark" className="nav-item nav-link px-2">Gafricas</NavLink></li>
                 <li><NavLink exact to="/AlefProyect/FirstReg" activeClassName="link-dark" className="nav-item nav-link px-2">Registro (datos)</NavLink></li>
+                <li><NavLink exact to="/AlefProyect/Postulaciones" activeClassName="link-dark" className="nav-item nav-link px-2">Postulaciones</NavLink></li>
 
             </ul>
             

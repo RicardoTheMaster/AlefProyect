@@ -13,6 +13,7 @@ import { Home } from '../Screen/Home';
 import { InfoScreen } from '../Screen/InfoScreen';
 import { UserScreen } from '../Screen/UserScreen';
 import { PruebasScreen } from '../Screen/PruebasScreen';
+import { PostsScreen } from '../Screen/PostsScreen';
 
 export const BasicRouter = () => {
     return (
@@ -25,6 +26,7 @@ export const BasicRouter = () => {
                     <Route exact path="/AlefProyect/Login" component={UserScreen}/>
                     <Route exact path="/AlefProyect/Graficas" component={PruebasScreen}/>
                     <Route path="/AlefProyect/FirstReg" component={InfoScreen}/>
+                    <Route path="/AlefProyect/Postulaciones" component={PostsScreen}/>
 
                     <Redirect to="/AlefProyect/"/>
                 </Switch>

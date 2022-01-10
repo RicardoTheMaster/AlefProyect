@@ -14,20 +14,23 @@ import { InfoScreen } from '../Screen/InfoScreen';
 import { UserScreen } from '../Screen/UserScreen';
 import { PruebasScreen } from '../Screen/PruebasScreen';
 import { PostsScreen } from '../Screen/PostsScreen';
+import { QuizRouter } from './QuizRouter';
 
 export const BasicRouter = () => {
     return (
         <Router>
-            <Header />
- 
-            <div className="container">
+            
+             <div className="container">
+             <Header />
                 <Switch>
+                    
                     <Route exact path="/AlefProyect/" component={Home}/>
                     <Route exact path="/AlefProyect/Login" component={UserScreen}/>
                     <Route exact path="/AlefProyect/Graficas" component={PruebasScreen}/>
                     <Route path="/AlefProyect/FirstReg" component={InfoScreen}/>
                     <Route path="/AlefProyect/Postulaciones" component={PostsScreen}/>
-
+                    <Route path="/AlefProyect/Quizz" component={QuizRouter}/>
+                    
                     <Redirect to="/AlefProyect/"/>
                 </Switch>
             </div>

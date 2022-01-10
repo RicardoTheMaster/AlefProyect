@@ -1,7 +1,7 @@
 import { Field } from 'formik'
 import React from 'react'
 import "animate.css"
-export const Inp = ({col,name,label,place,type="text",value,errors, touched, disabled=false,change,as, ...rest}) => {
+export const Inp = ({col,t="col-12",name,label,place,type="text",value,errors, touched, disabled=false,change,as, ...rest}) => {
     return (
         <div className={'col'+col}>
         <label htmlFor={name} className="z form-label pt-2">{label}: </label>
@@ -13,7 +13,7 @@ export const Inp = ({col,name,label,place,type="text",value,errors, touched, dis
              placeholder={place}
              disabled={disabled}
              autoComplete="off"
-             className="col-12 list-group-item"
+             className={" list-group-item text-center "+t}
              {...rest}
             />
             {errors && touched ? (

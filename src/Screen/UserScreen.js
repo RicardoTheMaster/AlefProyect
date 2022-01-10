@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import img from '../Assets/Images/user.jfif'
 import PersonPinCircleIcon from '@mui/icons-material/PersonPinCircle';
 import EditIcon from '@mui/icons-material/Edit';
@@ -8,7 +8,7 @@ import {  Doughnut   } from 'react-chartjs-2'
 export const UserScreen = () => {
 
     const data={
-        labels:['',' % Llenado'],
+        labels:['',' 70% Llenado'],
         datasets:[{
             data:[30,70],
             backgroundColor:['white','green']
@@ -17,6 +17,12 @@ export const UserScreen = () => {
     const opciones={
         responsive:true
     }
+    useEffect(() => {
+        
+        const getData=()=>{
+            
+        }
+    }, [])
     return (
         <div className='animate__animated animate__backInDown'> 
         <div className='row pb-4 justify-content-center '>

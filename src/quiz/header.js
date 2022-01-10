@@ -1,16 +1,9 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import { useRouteMatch } from 'react-router-dom/cjs/react-router-dom.min';
 import logo2 from '../Assets/Images/logo2.png'
-export const Header = () => {
-
-    let {path,url}=useRouteMatch();
-    console.log(path,url)
-    return (<>
-        {path==='' ?
-        <></>
-        :
-        <div className="container" id="HeaderUser">
+export const Qheader = () => {
+    return (
+        <div className="container">
         <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <NavLink exact to="/AlefProyect/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
         
@@ -21,10 +14,9 @@ export const Header = () => {
 
         <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><NavLink exact to="/AlefProyect/"      activeClassName="link-dark" className="nav-item nav-link px-2 ">Home</NavLink></li>
-                <li><NavLink exact to="/AlefProyect/Login" activeClassName="link-dark" className="nav-item nav-link px-2">Perfil</NavLink></li>
-                <li><NavLink exact to="/AlefProyect/Graficas" activeClassName="link-dark" className="nav-item nav-link px-2">Gafricas</NavLink></li>
-                <li><NavLink exact to="/AlefProyect/FirstReg" activeClassName="link-dark" className="nav-item nav-link px-2">Registro (datos)</NavLink></li>
-                <li><NavLink exact to="/AlefProyect/Postulaciones" activeClassName="link-dark" className="nav-item nav-link px-2">Postulaciones</NavLink></li>
+                <li><NavLink exact to="/AlefProyect/Quizz/login" activeClassName="link-dark" className="nav-item nav-link px-2">Login</NavLink></li>
+                <li><NavLink exact to="/AlefProyect/Quizz/Reg" activeClassName="link-dark" className="nav-item nav-link px-2">Registro</NavLink></li>
+                <li><NavLink exact to="/AlefProyect/Quizz/encuesta" activeClassName="link-dark" className="nav-item nav-link px-2">Encuesta</NavLink></li>
 
             </ul>
             
@@ -36,8 +28,5 @@ export const Header = () => {
         </header>
         
         </div>
-        }
-        </>
     )
-    
 }

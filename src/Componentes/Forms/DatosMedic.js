@@ -1,9 +1,10 @@
 import { Form, Formik } from 'formik';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { blood, BRM, SN } from '../Elementos/Opts'
 import { Inp } from '../Elementos/Inp'
 import * as Yup from "yup";
 import { Sel } from '../Elementos/Sel';
+import axios from 'axios';
 
 
 export const DatosMedic = () => {
@@ -18,19 +19,100 @@ export const DatosMedic = () => {
                             medic_tom:Yup.string().required("¡Escoge uno!"),
                             medic_fum:Yup.string().required("¡Escoge uno!"),
                             medic_dettom:Yup.string("¡Solo letras!").min(3,'¡Muy corto!').max(100, '¡Muy largo!').required('¡Registra tus motivos!')
-                                       .matches(/^[aA-zZ0-9.,]+$/,"¡Caracteres no validos!").required("¡Detalla tus motivos!"),
+                                       .matches(/^[aA-zZ0-9\s.,]+$/,"¡Caracteres no validos!").required("¡Detalla tus motivos!"),
                             medic_detfum:Yup.string("¡Solo letras!").min(3,'¡Muy corto!').max(100, '¡Muy largo!').required('¡Registra tus motivos!')
-                                       .matches(/^[aA-zZ0-9.,]+$/,"¡Caracteres no validos!").required("¡Detalla tus motivos!"),
+                                       .matches(/^[aA-zZ0-9\s.,]+$/,"¡Caracteres no validos!").required("¡Detalla tus motivos!"),
                             medic_cir:Yup.string().required("¡Escoge uno!"),
                             medic_acc:Yup.string().required("¡Escoge uno!"),
                             medic_detcir:Yup.string("¡Solo letras!").min(3,'¡Muy corto!').max(100, '¡Muy largo!').required('¡Registra tus motivos!')
-                                       .matches(/^[aA-zZ0-9.,]+$/,"¡Caracteres no validos!").required("¡Detalla tus motivos!"),
+                                       .matches(/^[aA-zZ0-9\s.,]+$/,"¡Caracteres no validos!").required("¡Detalla tus motivos!"),
                             medic_detacc:Yup.string("¡Solo letras!").min(3,'¡Muy corto!').max(100, '¡Muy largo!').required('¡Registra tus motivos!')
-                                       .matches(/^[aA-zZ0-9.,]+$/,"¡Caracteres no validos!").required("¡Detalla tus motivos!"),
+                                       .matches(/^[aA-zZ0-9\s.,]+$/,"¡Caracteres no validos!").required("¡Detalla tus motivos!"),
 
                 });
-    return (
 
+                const [consult, setconsult] = useState()
+                const [flag, setflag] = useState(false)
+                const id='61a4557dc917e8f80c770934';
+            
+                const consulta= async ()=>{
+                      try{
+                        const res=await fetch("http://localhost:4500/api/users/medicos/"+id);
+                        const post=await res.json();
+                        if(!post.medic_dep){
+                            setflag(false)
+                            setconsult({
+                                medic_salud:'',
+                                medic_dep:'',
+                                medic_san:'',
+                                medic_tom:'',
+                                medic_fum:'',
+                                medic_detfum:'',
+                                medic_dettom:'',
+                                medic_detcir:'',
+                                medic_cir:'',
+                                medic_acc:'',
+                                medic_detacc:'',
+                            })
+                        }else{
+                            setflag(false)
+                            setconsult({
+                                medic_salud:post.medic_salud,
+                            medic_dep:post.medic_dep,
+                            medic_san:post.medic_san,
+                            medic_tom:post.medic_tom,
+                            medic_fum:post.medic_fum,
+                            medic_detfum:post.medic_detfum,
+                            medic_dettom:post.medic_dettom,
+                            medic_detcir:post.medic_detcir,
+                            medic_cir:post.medic_cir,
+                            medic_acc:post.medic_acc,
+                            medic_detacc:post.medic_detacc,
+                            })
+                        }           
+                        setflag(post)
+                      }catch(e){
+                          console.log("Sin datos",e)
+                        setconsult({
+                            medic_salud:'',
+                            medic_dep:'',
+                            medic_san:'',
+                            medic_tom:'',
+                            medic_fum:'',
+                            medic_detfum:'',
+                            medic_dettom:'',
+                            medic_detcir:'',
+                            medic_cir:'',
+                            medic_acc:'',
+                            medic_detacc:'',
+                        })
+                        setflag(false)
+                              }
+                    }
+                    useEffect(() => {
+                    consulta()
+                    }, [])
+            
+            
+                const insertinfo=async(datos)=>{        
+                    try{
+                    const enviando= await axios.post('http://localhost:4500/api/users/medicos/'+id,datos)
+                    if(enviando){
+                        setEnviado(true)
+                    }
+                    }catch(error){
+                        console.log(error)
+                    }
+                }
+            
+
+
+
+
+    return (
+        <>
+        {consult &&
+        <>
         <div className="pt-2 animate__animated animate__backInUp ">
         
               <Formik
@@ -52,6 +134,7 @@ export const DatosMedic = () => {
                             console.log(valores)
                             setEnviado(true);
                             setTimeout(()=>setEnviado(false),5000);
+                            insertinfo(valores)
                         }}
 
                         
@@ -126,6 +209,9 @@ export const DatosMedic = () => {
                     </Formik> 
                         
         </div>
+        </>
+       }
+        </>
     )
 }
 

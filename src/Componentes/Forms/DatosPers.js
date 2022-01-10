@@ -7,8 +7,10 @@ import { SEX, NAC } from '../Elementos/Opts'
 import { Sel } from '../Elementos/Sel'
 import * as Yup from "yup";
 import { CalifJobModal } from './CalifJobModal'
+import axios from 'axios'
+import { TryRounded } from '@mui/icons-material'
 
-export const DatosPers  = () => {
+export const DatosPers   = () => {
     
     const [enviado, setEnviado] = useState(false);
 
@@ -41,27 +43,48 @@ export const DatosPers  = () => {
               
     const [consult, setconsult] = useState()
     const [flag, setflag] = useState(false)
+    const id='61a4557dc917e8f80c770934';
+
     const consulta= async ()=>{
           try{
-            const res=await fetch(`http://127.0.0.1/alefwithphp/php/getInformationDP.php?id=${4}`)
+            const res=await fetch("http://localhost:4500/api/users/personales/"+id);
             const post=await res.json();
-            console.log(post)
-            setconsult({
-                apellidoP:post.apellidoP,
-                apellidoM:post.apellidoM,
-                nombre:post.nombre,
-                fechanac:post.fechanac,
-                sex:post.sex,
-                edad:post.edad,
-                tel:post.tel,
-                cel:post.cel,
-                nacionalidad:post.nacionalidad,
-                curp:post.curp,
-                rfc:post.rfc,
-                nss:post.nss,
-                ID:post.ID
-            })
-            setflag(true)
+            if(!post.apellidoM){
+                setflag(false)
+                setconsult({
+                    apellidoP:'',
+                    apellidoM:'',
+                    nombre:'',
+                    fechanac:'',
+                    sex:'',
+                    edad:'',
+                    tel:'',
+                    cel:'',
+                    nacionalidad:'',
+                    curp:'',
+                    rfc:'',
+                    nss:'',
+                    ID:id
+                })
+            }else{
+                setflag(false)
+                setconsult({
+                    apellidoP:post.apellidoP,
+                    apellidoM:post.apellidoM,
+                    nombre:post.nombre,
+                    fechanac:(post.fechanac).substring(0,10),
+                    sex:post.sex,
+                    edad:post.edad,
+                    tel:post.tel,
+                    cel:post.cel,
+                    nacionalidad:post.nacionalidad,
+                    curp:post.curp,
+                    rfc:post.rfc,
+                    nss:post.nss,
+                    ID:id
+                })
+            }           
+            setflag(post)
           }catch(e){
               console.log("Sin datos",e)
             setconsult({
@@ -77,48 +100,27 @@ export const DatosPers  = () => {
                 curp:'',
                 rfc:'',
                 nss:'',
-                ID:4
+                ID:id
             })
             setflag(false)
                   }
         }
-    
         useEffect(() => {
         consulta()
-        
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [])
-    const insertinfo=async(datos)=>{
-        const enviar =await fetch('http://127.0.0.1/alefwithphp/php/insDP.php',{
-            method:"POST",
-            body:datos
-        })
-        const respuesta=await enviar.json();
 
-        if(respuesta){
-            setEnviado(true);
-        }else{
-            console.log("error")
+
+    const insertinfo=async(datos)=>{        
+        try{
+        const enviando= await axios.post('http://localhost:4500/api/users/personales/'+id,datos)
+        if(enviando){
+            setEnviado(true)
+        }
+        }catch(error){
+            console.log(error)
         }
     }
-    const updateinfo=async(datos)=>{
-                console.log(datos)
-                
-            
-             const enviar =await fetch('http://127.0.0.1/alefwithphp/php/upDP.php',{
-                method:"PUT",
-                body:datos
-            })
-            const respuesta=await enviar.json();
-    
-            if(respuesta){
-                setEnviado(true);
-            }else{
-                console.log("error")
-            }
-            
-}
- //   const {apellidoP, apellidoM, nombre,fechanac,sex,edad,tel,cel,nacionalidad,curp,rfc,nss}=consult[0]
+
     return(
         
         <>
@@ -134,13 +136,8 @@ export const DatosPers  = () => {
                         initialValues={consult}
 
                         onSubmit={(valores, {resetForm})=>{
-                            console.log(flag)
-                            if(flag){
-                                updateinfo(JSON.stringify(valores))
-                            }else{
-                                insertinfo(JSON.stringify(valores))
-                            }
                             
+                            insertinfo((valores))
                             
                         }}
 

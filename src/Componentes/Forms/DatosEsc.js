@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Inp } from '../Elementos/Inp'
 import * as Yup from "yup";
 import { Sel } from '../Elementos/Sel';
@@ -10,6 +10,7 @@ import "animate.css";
 import { Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { Mes, Grado, Avance, Doc, Npos, Xpos} from '../Elementos/Opts';
+import axios from 'axios';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -46,7 +47,6 @@ export const DatosEsc = () => {
     const [avnz, setavnz] = useState("")
 
     const getValCon=(values)=>{
-        console.log(values)
         if(values.esc_pos){
             if(values.esc_pos==="En proceso"){
 
@@ -81,7 +81,6 @@ export const DatosEsc = () => {
     const getValProPos=(values)=>{
             if((values.esc_avan==='En Curso' || values.esc_avan==='Trunco') && values.esc_name){
                 setEnviado(true);
-                console.log('entra');
             }else if(values.esc_name && values.esc_doc){
                 setEnviado(true)
             }else{
@@ -102,14 +101,62 @@ export const DatosEsc = () => {
                     .matches(/^[aA-zZ\s0-9.]+$/,"¡Caracteres no permitidos!"),
                     esc_Npos:Yup.string().required("Escoge")
                   });
-    return (
 
-        <div className="pt-2 animate__animated animate__backInUp  ">
-                <hr />
-            <h4 className="text">Datos Escolares</h4>
-                <hr />          
-              <Formik
-                        initialValues={{
+
+
+                  const [consult, setconsult] = useState()
+                  const [flag, setflag] = useState(false)
+                  const id='61a4557dc917e8f80c770934';
+              
+                  const consulta= async ()=>{
+                        try{
+                          const res=await fetch("http://localhost:4500/api/users/escolares/"+id);
+                          const post=await res.json();
+                          if(!post.esc_avan){
+                              setflag(false)
+                              setconsult({esc_pos:'',
+                                esc_nvlaca:'',
+                                esc_avan:'',
+                                esc_perIM:'',
+                                esc_perIA:'',
+                                esc_perTM:'',
+                                esc_perTA:'',
+                                esc_Npos:1,
+                                esc_posperTM:'',
+                                esc_posperIM:'',
+                                esc_posperIA:'',
+                                esc_posperTA:'',
+                                esc_posNom:'',
+                                esc_posDM:'',
+                                esc_doc:'',
+                                esc_name:'',
+                                
+                              })
+                          }else{
+                              setflag(false)
+                              setconsult({
+                                esc_pos:post.esc_pos,
+                                esc_nvlaca:post.esc_nvlaca,
+                                esc_avan:post.esc_avan,
+                                esc_perIM:post.esc_perIM,
+                                esc_perIA:post.esc_perIA,
+                                esc_perTM:post.esc_perTM,
+                                esc_perTA:post.esc_perTA,
+                                esc_Npos:post.esc_Npos,
+                                esc_posperTM:post.esc_posperTM,
+                                esc_posperIM:post.esc_posperIM,
+                                esc_posperIA:post.esc_posperIA,
+                                esc_posperTA:post.esc_posperTA,
+                                esc_posNom:post.esc_posNom,
+                                esc_posDM:post.esc_posDM,
+                                esc_doc:post.esc_doc,
+                                esc_name:post.esc_name,
+                              })
+                          }           
+                          setflag(post)
+                        }catch(e){
+                            console.log("Sin datos",e)
+                          setconsult({
                             esc_pos:'',
                             esc_nvlaca:'',
                             esc_avan:'',
@@ -126,11 +173,38 @@ export const DatosEsc = () => {
                             esc_posDM:'',
                             esc_doc:'',
                             esc_name:'',
-
-                        }}
+                          })
+                          setflag(false)
+                                }
+                      }
+                      useEffect(() => {
+                      consulta()
+                      }, [])
+              
+              
+                  const insertinfo=async(datos)=>{        
+                      try{
+                      const enviando= await axios.post('http://localhost:4500/api/users/escolares/'+id,datos)
+                      if(enviando){
+                          setEnviado(true)
+                      }
+                      }catch(error){
+                          console.log(error)
+                      }
+                  }
+    return (
+<>
+    {consult &&
+        <>
+        <div className="pt-2 animate__animated animate__backInUp  ">
+                <hr />
+            <h4 className="text">Datos Escolares</h4>
+                <hr />          
+              <Formik
+                        initialValues={consult}
 
                         onSubmit={(valores, {resetForm})=>{
-
+                            insertinfo(valores)
                             if(valores.esc_nvlaca==='Posgrado' && valores.esc_avan==="Concluido"){
                                 getValCon(valores);
                                 
@@ -307,5 +381,8 @@ export const DatosEsc = () => {
                     </Formik> 
                         
         </div>
+        </>
+       }
+</>
     )
 }

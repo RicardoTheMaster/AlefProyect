@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as Yup from "yup";
 import {  Form, Formik } from 'formik'
 import { Inp } from '../Elementos/Inp';
+import axios from 'axios';
 export const DatosRefP = () => {
     const [enviado, setEnviado] = useState(false);
 
@@ -24,15 +25,18 @@ export const DatosRefP = () => {
                                   .matches(/^[aA-zZ\s0-9#.]+$/,"¡Unico signo permitido #!"),
                     refP2_tel:Yup.number("¡Solo numeros!").min(1000000000,'¡10 o 12 digitos!').max(999999999999, '¡Muy largo!').required('¡Telefono/Celular!'),
                 });
-    return (
 
-        <div className="pt-2">
-                <hr />
-            <h4 className="text">Datos personales</h4>
-                <hr />          
-              <Formik
-                        initialValues={{
-                            refP1_nom:'',
+                const [consult, setconsult] = useState()
+                const [flag, setflag] = useState(false)
+                const id='61a4557dc917e8f80c770934';
+
+                const consulta= async ()=>{
+                    try{
+                      const res=await fetch("http://localhost:4500/api/users/referencias/"+id);
+                      const post=await res.json();
+                      if(!post.refP1_dom){
+                          setflag(false)
+                          setconsult({ refP1_nom:'',
                             refP1_ocup:'',
                             refP1_dom:'',
                             refP1_tel:'',
@@ -40,13 +44,68 @@ export const DatosRefP = () => {
                             refP2_ocup:'',
                             refP2_dom:'',
                             refP2_tel:'',
-
-                        }}
+                            
+                          })
+                      }else{
+                          setflag(false)
+                          setconsult({
+                           refP1_nom:post.refP1_nom,
+                            refP1_ocup:post.refP1_ocup,
+                            refP1_dom:post.refP1_dom,
+                            refP1_tel:post.refP1_tel,
+                            refP2_nom:post.refP2_nom,
+                            refP2_ocup:post.refP2_ocup,
+                            refP2_dom:post.refP2_dom,
+                            refP2_tel:post.refP2_tel,
+                          })
+                      }           
+                      setflag(post)
+                    }catch(e){
+                        console.log("Sin datos",e)
+                      setconsult({
+                        refP1_nom:'',
+                        refP1_ocup:'',
+                        refP1_dom:'',
+                        refP1_tel:'',
+                        refP2_nom:'',
+                        refP2_ocup:'',
+                        refP2_dom:'',
+                        refP2_tel:'',
+                      })
+                      setflag(false)
+                            }
+                  }
+        useEffect(() => {
+        consulta()
+        }, [])
+                  const insertinfo=async(datos)=>{        
+                    try{
+                    const enviando= await axios.post('http://localhost:4500/api/users/refenrencias/'+id,datos)
+                    if(enviando){
+                        setEnviado(true)
+                    }
+                    }catch(error){
+                        console.log(error)
+                    }
+                }
+            
+    return (
+    
+        <>
+        {consult &&
+        <>
+        
+        <div className="pt-2">
+                <hr />
+            <h4 className="text">Datos personales</h4>
+                <hr />          
+              <Formik
+                        initialValues={consult}
 
                         onSubmit={(valores, {resetForm})=>{
                             console.log(valores)
-                            setEnviado(true);
-                            setTimeout(()=>setEnviado(false),5000);
+                            insertinfo((valores))
+                           
                         }}
 
                         
@@ -114,14 +173,15 @@ export const DatosRefP = () => {
                                     
                                     )
                                 }
-                               {
-                                    console.log(errors)
-                               }
+                              
                             </Form>
                         ) 
                         }
                     </Formik> 
                         
         </div>
+        </>
+       }
+    </>
     )
 }

@@ -195,3 +195,51 @@ export const edos={
 "Yucatán"	:31,
 "Zacatecas":32,
 }
+
+export const civil={
+    'Solter@':1,
+    'Casado@':1,
+    'Divorciad@':1,
+    'Viud@':1,
+    'Union libre':1,
+}
+
+export const ocup={
+    'Ama (o) de casa':1,
+    'Empleado de goribierno':1,
+    'Empleado del sector privado':1,
+    'Empleado de negocio':1,
+    'Dueño de negocio':1,
+    'Jubilado':1,
+    'Pensionado':1,
+    'Emprendedor':1,
+}
+export const zona={
+    Urbana:1, Céntrica:1, Suburbana:1
+}
+export const vivienda={
+    Propia:1,Prestada:1,Familiares:1,Crédito:1,Rentada:1, Otro:1
+}
+export const nvlsoc={
+    Alta:1,'Media Alta':1,Media:1,'Media Baja':1,Baja:1
+}
+export const casa={
+    Casa:1, Departamento:1, Condominio:1, 'Unidad Habitacional':1, 'Vivienda popular':1
+}
+export const pres={
+    Completo:1, Ordenado:1, Limpio:1, Incompleto:1, Desordenado:1, Normal:1, Sucio:1, Escaso:1, Descuidado:1
+}
+export const nvls={
+    Alto:1,
+    Medio:1,
+    Bajo:1
+}
+export const inter={
+    'No cuento con ninguno':1,
+    'Solo cable':1, 'Solo internet':1,
+    'Solo telefonía':1,
+    'Internet y telefonía':1,
+    'Internet y cable':1,
+    'Cable e internet':1,
+    'Cable y telefonía':1
+}
